@@ -1,0 +1,33 @@
+<h1>Login</h1>
+<form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="username" formControlName="username" id="username">
+  </mat-form-field><br>
+  <!-- <div *ngIf='!loginForm.valid'> -->
+    <!-- spørgsmålstegn så den checker om den ikke er null. Hvis den ikke er null, så checker den -->
+  <div *ngIf='loginForm.controls.username.touched && loginForm.controls.username.errors?.required'> 
+      Username must be filled out
+  </div>
+  <!-- Alternativ til touched er dirty, der skal man have slettet noget -->
+  <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.minlength">
+      Username must be over 5 characters
+  </div>
+  <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.maxlength">
+      Username must be under 20 chararcters
+  </div>
+  <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="password" formControlName="password" id="password">
+  </mat-form-field><br>
+  <div *ngIf='loginForm.controls.password.touched && loginForm.controls.password.errors?.required'> 
+      Password must be filled out
+  </div>
+  <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.minlength">
+      Password must be over 5 characters
+  </div>
+  <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.maxlength">
+      Password must be under 20 chararcters
+  </div>
+  <!-- <p>Login</p> -->
+  <!-- <input type="submit"> -->
+  <button mat-flat-button type="submit" color="primary" id="loginbutton">Login</button>
+</form>

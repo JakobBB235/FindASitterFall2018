@@ -1,0 +1,16 @@
+<p>
+  register works!
+</p>
+
+<!-- Redux. View calls (action creator) method that dispatches an action.-->
+<button (click)="sittersActions.setType(false)">Register as sitter</button>
+<button (click)="sittersActions.setType(true)">Register as baby</button>
+<div *ngIf="!isBaby && isBaby !== undefined"> you are registering as a sitter</div> 
+<div *ngIf="isBaby"> you are registering as a baby</div>
+
+<!-- <button routerLink="registerbaby">RegisterBaby</button>
+<button routerLink="registersitter">RegisterSitter</button> -->
+<button mat-stroked-button routerLink="registerbaby" color="primary">Register Baby</button>
+<button mat-stroked-button routerLink="registersitter" id="registerSitterId" color="primary">Register Sitter</button>
+
+<router-outlet></router-outlet>

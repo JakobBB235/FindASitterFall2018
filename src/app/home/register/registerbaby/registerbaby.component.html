@@ -1,0 +1,59 @@
+<h1>Register Baby</h1>
+
+<form novalidate [formGroup]="registerBabyForm" (ngSubmit)="onSubmit(registerBabyForm)">
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="nameId" placeholder="Name of baby" formControlName="name">
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.name.touched && registerBabyForm.controls.name.errors?.required'> 
+      Name must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select id="genderId" placeholder="Gender" formControlName="female"> 
+        <mat-option id="genderFemaleId" value="true">Female</mat-option>
+        <mat-option id="genderMaleId" value="false">Male</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.female.touched && registerBabyForm.controls.name.errors?.required'> 
+        Gender must be filled out
+  </div>
+
+  <mat-form-field>
+        <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.birthDate.touched && registerBabyForm.controls.name.errors?.required'> 
+        Birthdate must be filled out
+  </div>
+  
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="Special Needs" formControlName="specialNeeds">
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.specialNeeds.touched && registerBabyForm.controls.name.errors?.required'> 
+        Special needs must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="Address" formControlName="address">
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.address.touched && registerBabyForm.controls.name.errors?.required'> 
+        Address must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Zip Code" formControlName="zipCode">
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.zipCode.touched && registerBabyForm.controls.name.errors?.required'> 
+        Zip code must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="City" formControlName="city">
+  </mat-form-field><br>
+  <div *ngIf='registerBabyForm.controls.city.touched && registerBabyForm.controls.name.errors?.required'> 
+        City must be filled out
+  </div>
+
+  <button mat-flat-button type="submit" color="primary">Register</button>
+</form>

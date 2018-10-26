@@ -1,0 +1,83 @@
+<h1>Register Baby Sitter</h1>
+
+<form novalidate [formGroup]="registerSitterForm" (ngSubmit)="onSubmit(registerSitterForm)">
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="nameId" placeholder="Name" formControlName="name">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.name.touched && registerSitterForm.controls.name.errors?.required'> 
+      Name must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select id="genderId" placeholder="Gender" formControlName="female"> 
+        <mat-option id="genderFemaleId" value="true">Female</mat-option>
+        <mat-option id="genderMaleId" value="false">Male</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.female.touched && registerSitterForm.controls.name.errors?.required'> 
+        Gender must be filled out
+  </div>
+
+  <mat-form-field>
+        <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.birthDate.touched && registerSitterForm.controls.name.errors?.required'> 
+        Birthdate must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select  id="criminalRecordId" placeholder="Criminal Record" formControlName="noCriminalRecord"> 
+        <mat-option id="criminalRecordOptionId" value="false">Criminal Record</mat-option>
+        <mat-option id="noCriminalRecordOptionId" value="true">No Criminal Record</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.noCriminalRecord.touched && registerSitterForm.controls.name.errors?.required'> 
+        Must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select  id="childRecordId" placeholder="Child Record" formControlName="noChildRecord"> 
+        <mat-option id="childRecordOptionId" value="false">Child Record</mat-option>
+        <mat-option id="noChildRecordOptionId" value="true">No Child Record</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.noChildRecord.touched && registerSitterForm.controls.name.errors?.required'> 
+        Must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" id="hourlywageId" placeholder="Hourly Wage" formControlName="hourlyWage">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.hourlyWage.touched && registerSitterForm.controls.name.errors?.required'> 
+        Hourly wage Must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="addressId" placeholder="Address" formControlName="address">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.address.touched && registerSitterForm.controls.name.errors?.required'> 
+        Address must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" id="zipcodeId" placeholder="Zip Code" formControlName="zipCode">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.zipCode.touched && registerSitterForm.controls.name.errors?.required'> 
+        Zip Code must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="cityId" placeholder="City" formControlName="city">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.city.touched && registerSitterForm.controls.name.errors?.required'> 
+        City must be filled out
+  </div>
+
+  <button mat-flat-button type="submit" id="registerbutton" color="primary">Register</button>
+
+  <!-- TEST hidden?-->
+  <!-- <button mat-stroked-button routerLink="/portal/findsitter" id="testbutton" color="primary" hidden>TEST</button> -->
+  <!-- <button routerLink="/portal/findsitter" id="testbutton" hidden>TEST</button> -->
+</form>

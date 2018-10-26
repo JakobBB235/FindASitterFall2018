@@ -1,0 +1,29 @@
+<p>
+  findsitter works!
+</p>
+
+<!-- {{tempData.sitters[0].username}} -->
+
+<!-- <ul *ngFor="let sitter of tempData.sitters">
+  <li>
+     Name : {{sitter.name}}
+  </li>
+  <li>
+     Birthdate : {{sitter.birthDate}}
+  </li>
+  <li>
+     ZipCode : {{sitter.zipCode}}
+  </li>
+</ul> -->
+
+
+<mat-card *ngFor="let sitter of tempData.sitters" class="example-card" id="testLoop">
+  <app-displaysitter [sitter]="sitter" 
+    (sitterEditClicked)="onSitterEditClicked($event)">
+  </app-displaysitter>
+
+  
+</mat-card>
+
+<!-- TEST -->
+<!-- <button mat-stroked-button routerLink="/home/register/registersitter" id="registerSitterTestId" color="primary" hidden>TEST</button> -->
