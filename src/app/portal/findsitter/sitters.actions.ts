@@ -11,7 +11,7 @@ export class SittersActions {
 constructor (
   private ngRedux: NgRedux<IAppState>) {} 
 
-  // This gives a strygly typed way to call an action.
+  // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
 
   // This method can be called from a component, and will dispatch an action.

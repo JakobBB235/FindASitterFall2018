@@ -8,12 +8,15 @@ describe('sitters reducer', () => {
 });
 it('Toggle isBaby or sitter', () => {
   //Initial state.
-  let state = {isBaby: undefined};
+  let state = {isBaby: undefined, sitters: []};
 
   //Checks for state mutations.
   deepFreeze(state);
 
   //Expect, after calling reducer with state and action => new state is returned without mutations
-  expect( sittersReducer(state, { type: types.SittersActions.SET_REGISTER_BABYTYPE, payload: true })).toEqual({isBaby: true});
+  expect( sittersReducer(state, { 
+    type: types.SittersActions.SET_REGISTER_BABYTYPE, 
+    payload: true 
+  })).toEqual({isBaby: true});
 });
 });

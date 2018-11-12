@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TempDataService } from '../../temp-data.service';
 import { Sitter } from '../../entities/sitter';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'src/app/store';
 
 @Component({
   selector: 'app-findsitter',
@@ -9,9 +11,14 @@ import { Sitter } from '../../entities/sitter';
 })
 export class FindsitterComponent implements OnInit {
 
-  constructor(private tempData: TempDataService) { }
+  sitters: Sitter[];
+
+  constructor(private tempData: TempDataService, private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+    this.ngRedux.select(x => x.sitters).subscribe((data) => {
+      this.sitters = data.sitters;
+    });
   }
 
   onSitterEditClicked(sitter: Sitter) {

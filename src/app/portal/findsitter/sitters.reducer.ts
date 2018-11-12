@@ -2,7 +2,7 @@ import { SittersActions } from './sitters.actions';
 import { SittersState } from '../../store';
 import { tassign } from 'tassign';
 
-const INITIAL_STATE: SittersState = {isBaby: undefined}
+const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: []}
 
 // My reducer functions are responsible for changing state, by copying and 
 // changing the copy, since state is immutable.
