@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
+import { Sitter } from 'src/app/entities/sitter';
 
 @Injectable({ providedIn: 'root'})
 
@@ -13,6 +14,7 @@ constructor (
 
   // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
+  static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER';
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -20,6 +22,13 @@ constructor (
     this.ngRedux.dispatch({
       type: SittersActions.SET_REGISTER_BABYTYPE,
       payload: isBaby
+    })
+  }
+
+  createSitter(sitter: Sitter): void {
+    this.ngRedux.dispatch({
+      type: SittersActions.REGISTER_NEW_SITTER,
+      payload: sitter
     })
   }
 }

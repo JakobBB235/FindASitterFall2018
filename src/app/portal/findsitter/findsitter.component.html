@@ -16,13 +16,18 @@
   </li>
 </ul> -->
 
-
-<mat-card *ngFor="let sitter of tempData.sitters" class="example-card" id="testLoop">
+<!-- OLD -->
+<!-- <mat-card *ngFor="let sitter of tempData.sitters" class="example-card" id="testLoop">
   <app-displaysitter [sitter]="sitter" 
     (sitterEditClicked)="onSitterEditClicked($event)">
   </app-displaysitter>
+</mat-card> -->
 
-  
+
+<mat-card *ngFor="let sitter of sitters" class="example-card" id="testLoop">
+  <app-displaysitter [sitter]="sitter" 
+    (sitterEditClicked)="onSitterEditClicked($event)">
+  </app-displaysitter>
 </mat-card>
 
 <!-- TEST -->

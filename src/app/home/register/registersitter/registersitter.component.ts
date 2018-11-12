@@ -65,6 +65,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TempDataService } from '../../../temp-data.service';
 import { Sitter } from '../../../entities/sitter';
+import { SittersActions } from 'src/app/portal/findsitter/sitters.actions';
 
 @Component({
   selector: 'app-registersitter',
@@ -75,7 +76,7 @@ export class RegistersitterComponent implements OnInit {
 
   registerSitterForm;
 
-  constructor(private fb: FormBuilder, private tempData: TempDataService) { } 
+  constructor(private fb: FormBuilder, private tempData: TempDataService, private sittersActions: SittersActions) { } //Added sittersactions
 
   ngOnInit() { 
     this.registerSitterForm = this.fb.group(
@@ -104,22 +105,22 @@ export class RegistersitterComponent implements OnInit {
   
   //Used in test
   createNewUser(registerSitterForm){
-    // Sitter theSitter = new Sitter();
-    const theSitter = new Sitter();
-    theSitter.name = registerSitterForm.name;
-    theSitter.female = registerSitterForm.female;
-    theSitter.birthDate = registerSitterForm.birthDate;
-    theSitter.noCriminalRecord = registerSitterForm.noCriminalRecord;
-    theSitter.noChildRecord = registerSitterForm.noChildRecord;
-    theSitter.hourlyWage = registerSitterForm.hourlyWage;
-    theSitter.address = registerSitterForm.address;
-    theSitter.zipCode = registerSitterForm.zipCode;
-    theSitter.city = registerSitterForm.city;
+    // const theSitter = new Sitter();
+    // theSitter.name = registerSitterForm.name;
+    // theSitter.female = registerSitterForm.female;
+    // theSitter.birthDate = registerSitterForm.birthDate;
+    // theSitter.noCriminalRecord = registerSitterForm.noCriminalRecord;
+    // theSitter.noChildRecord = registerSitterForm.noChildRecord;
+    // theSitter.hourlyWage = registerSitterForm.hourlyWage;
+    // theSitter.address = registerSitterForm.address;
+    // theSitter.zipCode = registerSitterForm.zipCode;
+    // theSitter.city = registerSitterForm.city;
 
     //Easy way, cast to sitter:
-    // let sitter = registerSitterForm.value as Sitter;
+    let sitter = registerSitterForm.value as Sitter;
 
-    this.tempData.addSitter(theSitter); //pass object to tempdata
+    // this.tempData.addSitter(theSitter); //pass object to tempdata
+    this.sittersActions.createSitter(sitter);
 
     //nav til router: dep inject Router. this.router.navigate("/path")
   }

@@ -12,9 +12,6 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
 
         // When writing the CRUD cases, look into javascips spread operator. write different cases?
 
-
-
-
         case SittersActions.SET_REGISTER_BABYTYPE:
 
             // Copies state, and inserts new isBaby value in new state
@@ -27,6 +24,9 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
 
             // return tassign(state, { isBaby: action.payload });
             // return state;
+        case SittersActions.REGISTER_NEW_SITTER:
+            // Copies sitters array and adds the new sitter object to the copy
+            return tassign(state, { sitters: [...state.sitters, action.payload]})
         default:
             return state;
     }
