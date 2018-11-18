@@ -7,7 +7,7 @@ describe('sitters reducer', () => {
    expect(sittersReducer(undefined, {})).toEqual({isBaby: undefined}); //hvis der ikke sendes noget ind, får jeg så noget tilbage?
 });
 it('Toggle isBaby or sitter', () => {
-  //Initial state.
+  //Initial state. Makes sense to create a method initializing this to avoid changing all places if more than one test.
   let state = {isBaby: undefined, sitters: []};
 
   //Checks for state mutations.

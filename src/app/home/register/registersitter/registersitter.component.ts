@@ -81,6 +81,9 @@ export class RegistersitterComponent implements OnInit {
   ngOnInit() { 
     this.registerSitterForm = this.fb.group(
       {
+        username:['', Validators.required],
+        password:['', Validators.required],
+
         name: ['', [Validators.required, Validators.maxLength(100)]],
         female: ['', Validators.required],
         birthDate: ['', Validators.required],

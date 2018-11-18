@@ -21,7 +21,6 @@ import { FindbabyComponent } from './portal/findbaby/findbaby.component';
 import { RegisterComponent } from './home/register/register.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { SittersListComponent } from './sitters-list/sitters-list.component';
 import { DisplaysitterComponent } from './portal/displaysitter/displaysitter.component';
 // import { DisplaysitterComponent } from './displaysitter/displaysitter.component';
 // import { DisplaysitterComponent } from './portal/displaysitter.component';
@@ -29,7 +28,10 @@ import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store'
 import { IAppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 
-import { rootReducer } from './store'; // Added this to get the root reducer
+import { rootReducer } from './store';
+import { ManageAccountComponent } from './portal/manage-account/manage-account.component';
+import { AdminComponent } from './admin/admin.component';
+import { EditSitterComponent } from './admin/edit-sitter/edit-sitter.component'; // Added this to get the root reducer
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { rootReducer } from './store'; // Added this to get the root reducer
     RegisterComponent,
     ContactComponent,
     PagenotfoundComponent,
-    SittersListComponent,
-    DisplaysitterComponent
+    DisplaysitterComponent,
+    ManageAccountComponent,
+    AdminComponent,
+    EditSitterComponent
   ],
   imports: [
     BrowserModule,

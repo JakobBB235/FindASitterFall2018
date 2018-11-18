@@ -2,6 +2,20 @@
 
 <form novalidate [formGroup]="registerSitterForm" (ngSubmit)="onSubmit(registerSitterForm)">
   <mat-form-field class="example-full-width">
+      <input matInput type="text" id="usernameId" placeholder="Username" formControlName="username">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.username.touched && registerSitterForm.controls.username.errors?.required'> 
+      Username must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="password" id="passwordId" placeholder="Password" formControlName="password">
+  </mat-form-field><br>
+  <div *ngIf='registerSitterForm.controls.password.touched && registerSitterForm.controls.password.errors?.required'> 
+      Password must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
       <input matInput type="text" id="nameId" placeholder="Name" formControlName="name">
   </mat-form-field><br>
   <div *ngIf='registerSitterForm.controls.name.touched && registerSitterForm.controls.name.errors?.required'> 

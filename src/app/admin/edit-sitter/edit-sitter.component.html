@@ -1,0 +1,84 @@
+<p>
+  edit-sitter works!
+</p>
+<!-- FIELDS MUST BE PRE-POPPULATED WITH DATA -->
+<h1>Edit Baby Sitter</h1>
+
+<form novalidate [formGroup]="editSitterForm" (ngSubmit)="onSubmit(editSitterForm)">
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" value={{sitterToBeEdited.name}} id="nameId" placeholder="Name" formControlName="name">
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.name.touched && editSitterForm.controls.name.errors?.required'> 
+      Name must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select id="genderId" placeholder="Gender" formControlName="female"> 
+        <mat-option id="genderFemaleId" value="true">Female</mat-option>
+        <mat-option id="genderMaleId" value="false">Male</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.female.touched && editSitterForm.controls.name.errors?.required'> 
+        Gender must be filled out
+  </div>
+
+  <mat-form-field>
+        <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.birthDate.touched && editSitterForm.controls.name.errors?.required'> 
+        Birthdate must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select  id="criminalRecordId" placeholder="Criminal Record" formControlName="noCriminalRecord"> 
+        <mat-option id="criminalRecordOptionId" value="false">Criminal Record</mat-option>
+        <mat-option id="noCriminalRecordOptionId" value="true">No Criminal Record</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.noCriminalRecord.touched && editSitterForm.controls.name.errors?.required'> 
+        Must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select  id="childRecordId" placeholder="Child Record" formControlName="noChildRecord"> 
+        <mat-option id="childRecordOptionId" value="false">Child Record</mat-option>
+        <mat-option id="noChildRecordOptionId" value="true">No Child Record</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.noChildRecord.touched && editSitterForm.controls.name.errors?.required'> 
+        Must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" value="{{sitterToBeEdited.hourlyWage}}" id="hourlywageId" placeholder="Hourly Wage" formControlName="hourlyWage">
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.hourlyWage.touched && editSitterForm.controls.name.errors?.required'> 
+        Hourly wage Must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" value="sitterToBeEdited.address" id="addressId" placeholder="Address" formControlName="address">
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.address.touched && editSitterForm.controls.name.errors?.required'> 
+        Address must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" value="sitterToBeEdited.zipCode" id="zipcodeId" placeholder="Zip Code" formControlName="zipCode">
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.zipCode.touched && editSitterForm.controls.name.errors?.required'> 
+        Zip Code must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" value="sitterToBeEdited.city" id="cityId" placeholder="City" formControlName="city">
+  </mat-form-field><br>
+  <div *ngIf='editSitterForm.controls.city.touched && editSitterForm.controls.name.errors?.required'> 
+        City must be filled out
+  </div>
+
+  <button mat-flat-button type="submit" id="registerbutton" color="primary">Register</button>
+
+</form>

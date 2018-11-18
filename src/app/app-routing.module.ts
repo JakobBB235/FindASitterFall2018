@@ -11,6 +11,8 @@ import { FindbabyComponent } from './portal/findbaby/findbaby.component';
 import { FindsitterComponent } from './portal/findsitter/findsitter.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AdminComponent } from './admin/admin.component';
+import { EditSitterComponent } from './admin/edit-sitter/edit-sitter.component';
 
 // Insert routes here
 const routes: Routes = [
@@ -38,6 +40,12 @@ const routes: Routes = [
       // {path: 'findsitter/:id', component: EditsitterComponent}
     ]
   },
+
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children:
+    [
+      {path: 'edit-sitter', component: EditSitterComponent}
+    ]
+  }, //Add admin children
 
   // Always put this last to avoid errors
   {path: '**', component: PagenotfoundComponent}

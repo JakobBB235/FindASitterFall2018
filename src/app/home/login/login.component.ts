@@ -26,15 +26,23 @@ export class LoginComponent implements OnInit {
     if (loginForm.valid){
       // alert("valid");
       // Send request to back-end to validate login
-      this.authService.login().subscribe(result => {
-      this.router.navigate(['/portal']);
+    //   this.authService.login().subscribe(result => {
+    //   this.router.navigate(['/portal']);
+    // }); //Subscribe!
+
+    //NEW
+    this.authService.login().subscribe(result => {
+      if(loginForm.username == "admin" && loginForm.password == "aD_min123")
+        this.router.navigate(['/admin']);
+      else
+        this.router.navigate(['/portal']);
     }); //Subscribe!
       
       //Route to portal site
       // this.router.navigate(['/portal']);
     } else
       // alert("invalid");
-    console.log(loginForm)
+      console.log(loginForm)
   }
 
 }

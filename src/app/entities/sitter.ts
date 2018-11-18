@@ -12,4 +12,11 @@ export class Sitter {
     /*private*/ city: String;
 
     //private calendar: any; //we don't know the type yet
+    ratings?: Rating[]
+}
+
+export class Rating {
+    rating: number; //1-5
+    description: String;
+    babyId: number; //username
 }

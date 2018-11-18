@@ -9,12 +9,13 @@ import { Sitter } from 'src/app/entities/sitter';
 export class SittersActions {
 
 // We depencency inject the redux library.
-constructor (
-  private ngRedux: NgRedux<IAppState>) {} 
+constructor (private ngRedux: NgRedux<IAppState>) {} 
 
   // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
-  static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER';
+  static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER'; //Create
+  static SAVE_INDEX: string = 'SAVE_INDEX'; //Save index of item about to be updated/deleted
+  static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -29,6 +30,21 @@ constructor (
     this.ngRedux.dispatch({
       type: SittersActions.REGISTER_NEW_SITTER,
       payload: sitter
+    })
+  }
+
+  saveIndex(index: number): void {
+    this.ngRedux.dispatch({
+      type: SittersActions.SAVE_INDEX,
+      payload: {index: Number}
+    })
+  }
+
+  //Reuse createSitter?
+  updateSitter(sitter: Sitter, index: number): void {
+    this.ngRedux.dispatch({
+      type: SittersActions.UPDATE_EXISTING_SITTER,
+      payload: {index: Number, sitter: Sitter}
     })
   }
 }
