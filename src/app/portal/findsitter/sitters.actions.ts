@@ -36,15 +36,16 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
   saveIndex(index: number): void {
     this.ngRedux.dispatch({
       type: SittersActions.SAVE_INDEX,
-      payload: {index: Number}
+      payload: index
     })
+    console.log("actions", index);
   }
 
   //Reuse createSitter?
   updateSitter(sitter: Sitter, index: number): void {
     this.ngRedux.dispatch({
       type: SittersActions.UPDATE_EXISTING_SITTER,
-      payload: {index: Number, sitter: Sitter}
+      payload: {index: Number, sitter: Sitter} //delete types?
     })
   }
 }

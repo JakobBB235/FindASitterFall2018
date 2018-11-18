@@ -29,6 +29,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             // Copies sitters array and adds the new sitter object to the copy
             return tassign(state, { sitters: [...state.sitters, action.payload]})
         case SittersActions.SAVE_INDEX:
+            console.log("reducer", action.payload);
             return tassign(state, { itemIndex: action.payload })
         case SittersActions.UPDATE_EXISTING_SITTER:
             // let sitter = state.sitters.find(action.payload);

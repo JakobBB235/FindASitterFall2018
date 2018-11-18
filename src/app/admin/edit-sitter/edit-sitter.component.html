@@ -6,7 +6,7 @@
 
 <form novalidate [formGroup]="editSitterForm" (ngSubmit)="onSubmit(editSitterForm)">
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value={{sitterToBeEdited.name}} id="nameId" placeholder="Name" formControlName="name">
+      <input matInput type="text" value="{{sitterToBeEdited.name}}" id="nameId" placeholder="Name" formControlName="name">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.name.touched && editSitterForm.controls.name.errors?.required'> 
       Name must be filled out
@@ -23,7 +23,7 @@
   </div>
 
   <mat-form-field>
-        <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+        <input matInput [matDatepicker]="picker" value="{{sitterToBeEdited.birthDate}}" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
   </mat-form-field><br>
@@ -59,7 +59,7 @@
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value="sitterToBeEdited.address" id="addressId" placeholder="Address" formControlName="address">
+      <input matInput type="text" value="{{sitterToBeEdited.address}}" id="addressId" placeholder="Address" formControlName="address">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.address.touched && editSitterForm.controls.name.errors?.required'> 
         Address must be filled out
@@ -73,7 +73,7 @@
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value="sitterToBeEdited.city" id="cityId" placeholder="City" formControlName="city">
+      <input matInput type="text" value="{{sitterToBeEdited.city}}" id="cityId" placeholder="City" formControlName="city">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.city.touched && editSitterForm.controls.name.errors?.required'> 
         City must be filled out

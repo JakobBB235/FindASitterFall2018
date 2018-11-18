@@ -19,27 +19,28 @@ export class EditSitterComponent implements OnInit {
   constructor(private fb: FormBuilder, private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
-    this.editSitterForm = this.fb.group(
-      {
-        name: ['', [Validators.required, Validators.maxLength(100)]],
-        female: ['', Validators.required],
-        birthDate: ['', Validators.required],
-        noCriminalRecord: ['', Validators.required],
-        noChildRecord: ['', Validators.required],
-        hourlyWage: ['', Validators.required],
-        address: ['', Validators.required],
-        zipCode: ['', Validators.required],
-        city: ['', Validators.required]
-      }
-    )
-
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.index = data.itemIndex;
-      this.sitterToBeEdited = data.sitters[this.index];
+      this.sitterToBeEdited = data.sitters[data.itemIndex];
 
       //TEST
       // this.sitterToBeEdited = data.sitters[0];
       console.log(this.sitterToBeEdited.name);
+      console.log(data.itemIndex);
+      // console.log(this.index);
+    });
+
+    this.editSitterForm = this.fb.group(
+    {
+      name: ['', [Validators.required, Validators.maxLength(100)]],
+      female: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      noCriminalRecord: ['', Validators.required],
+      noChildRecord: ['', Validators.required],
+      hourlyWage: ['', Validators.required],
+      address: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      city: ['', Validators.required]
     });
   }
 
