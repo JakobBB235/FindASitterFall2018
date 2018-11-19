@@ -30,9 +30,9 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
         case SittersActions.REGISTER_NEW_SITTER:
             // Copies sitters array and adds the new sitter object to the copy
             return tassign(state, { sitters: [...state.sitters, action.payload]})
-        case SittersActions.SAVE_INDEX:
+        case SittersActions.SAVE_ID:
             console.log("reducer", action.payload);
-            return tassign(state, { itemIndex: action.payload })
+            return tassign(state, { itemId: action.payload })
         case SittersActions.UPDATE_EXISTING_SITTER: //Not working
             // let sitter = state.sitters.find(action.payload);
             let sitter = state.sitters[action.payload.index]
@@ -52,7 +52,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             // return tassign(state, {  })
 
             //NEW
-            // return tassign(state, { sitter: state.sitters.filter(sitter => sitter._id !== action.payload) });
+            return tassign(state, { sitters: state.sitters.filter(sitter => sitter._id !== action.payload) });
         case SittersActions.ENABLE_ADMIN_AUTHORITY:
             return tassign(state, { isAdmin: action.payload })
         default:

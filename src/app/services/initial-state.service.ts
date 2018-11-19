@@ -8,7 +8,7 @@ export class InitialStateService {
 
   constructor() { }
 
-  public static getInitialSitterTestState(){
+  public static getInitialSitterTestState(){ //Smart to use in tests
     return { isBaby: undefined, sitters: [
       {_id: '1', username: 'azat', password: 'secret', name: 'Azat Baran', female: false, birthDate: new Date(1995, 2, 16),
       noCriminalRecord: true, noChildRecord: true, hourlyWage: 1337, address: 'some', zipCode: '2600', city: 'Glostrup'},
@@ -18,7 +18,7 @@ export class InitialStateService {
 
       {_id: '3',username: 'salik', password: 'secret3', name: 'Salik', female: false, birthDate: new Date(1995, 1, 1),
       noCriminalRecord: true, noChildRecord: true, hourlyWage: 100, address: 'some', zipCode: '2400', city: 'København NV'}
-    ], itemIndex: undefined, isAdmin: undefined};
+    ], itemId: undefined, isAdmin: undefined};
   }
 
   // public addSitter(sitter: Sitter): void {

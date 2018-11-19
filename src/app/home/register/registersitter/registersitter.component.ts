@@ -122,6 +122,6 @@ export class RegistersitterComponent implements OnInit {
     //Easy way, cast to sitter:
     let sitter = registerSitterForm.value as Sitter;
     this.sittersActions.createSitter(sitter); 
-    this.router.navigate(['/login']); //Navigate to loginpage. Might conflict with e2e test
+    this.router.navigate(['/home/login']); //Navigate to loginpage. Might conflict with e2e test
   }
 }

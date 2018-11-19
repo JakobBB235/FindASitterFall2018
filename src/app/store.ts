@@ -6,7 +6,7 @@ import { Sitter } from './entities/sitter';
 export class SittersState {
 isBaby: boolean;
 sitters: Sitter[];
-itemIndex: number;
+itemId: string;
 isAdmin: boolean; //= false;
 }
 

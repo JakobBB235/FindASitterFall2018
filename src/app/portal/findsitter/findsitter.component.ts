@@ -25,16 +25,16 @@ export class FindsitterComponent implements OnInit {
     });
   }
 
-  onSitterEditClicked(index: number) { //sitter: Sitter, 
+  onSitterEditClicked(id: string) { //sitter: Sitter, 
       // console.log("Someone clicked sitter", sitter);
-      console.log(index);
-      console.log("HEJ")
-      this.sittersActions.saveIndex(index);
-      this.router.navigate(['/admin/edit-sitter']) 
+      console.log(id);
+      console.log("HEJ");
+      this.sittersActions.saveId(id);
+      this.router.navigate(['/admin/edit-sitter']);
       // this.sittersActions.updateSitter(sitter, index);
   }
 
-  onSitterDeleteClicked(index: number) {
-    this.sittersActions.deleteSitter(index);
+  onSitterDeleteClicked(id: string) { //FIX
+    this.sittersActions.deleteSitter(id);
   }
 }

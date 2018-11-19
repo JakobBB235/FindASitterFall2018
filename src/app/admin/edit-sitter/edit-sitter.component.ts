@@ -14,24 +14,24 @@ export class EditSitterComponent implements OnInit {
 
   editSitterForm;
   sitterToBeEdited: Sitter; //get from store?
-  index: number;
+  itemId: string;
 
   constructor(private fb: FormBuilder, private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
-      this.index = data.itemIndex;
-      this.sitterToBeEdited = data.sitters[data.itemIndex];
-
-      //TEST
-      // this.sitterToBeEdited = data.sitters[0];
-      console.log(this.sitterToBeEdited.name);
-      console.log(data.itemIndex);
-      // console.log(this.index);
+      //OLD
+      // this.index = data.itemIndex;
+      // this.sitterToBeEdited = data.sitters[data.itemIndex];
+      // console.log(this.sitterToBeEdited.name);
+      // console.log(data.itemIndex);
+      this.itemId = data.itemId;
+      this.sitterToBeEdited = data.sitters.find(sitter => sitter._id == data.itemId);//.filter(sitter => sitter._id == data.itemId)//Or itemId
     });
 
     this.editSitterForm = this.fb.group(
     {
+      _id:['', Validators.required], //REMOVE?
       username:['', Validators.required],
       password:['', Validators.required],
 
@@ -46,7 +46,7 @@ export class EditSitterComponent implements OnInit {
       city: ['', Validators.required]
     });
 
-    this.editSitterForm.setValue(this.sitterToBeEdited); //Only works if all attribues are a part of form
+    this.editSitterForm.setValue(this.sitterToBeEdited); //Only works if all attribues are a part of form.
     // this.editSitterForm.get('name').setValue(this.sitterToBeEdited.name) //Sets value of single attribute
   }
 
@@ -62,7 +62,7 @@ export class EditSitterComponent implements OnInit {
   updateSitter(editSitterForm){
     //Easy way, cast to sitter:
     let sitter = editSitterForm.value as Sitter;
-    this.sittersActions.updateSitter(sitter, this.index);
+    this.sittersActions.updateSitter(sitter);
 
     //nav til router: dep inject Router. this.router.navigate("/path")
   }

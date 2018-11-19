@@ -14,7 +14,7 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
   // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
   static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER'; //Create
-  static SAVE_INDEX: string = 'SAVE_INDEX'; //Save index of item about to be updated/deleted
+  static SAVE_ID: string = 'SAVE_ID'; //Save ID of item about to be updated/deleted
   static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
   static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
@@ -35,26 +35,26 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
     })
   }
 
-  saveIndex(index: number): void {
+  saveId(id: string): void {
     this.ngRedux.dispatch({
-      type: SittersActions.SAVE_INDEX,
-      payload: index
+      type: SittersActions.SAVE_ID,
+      payload: id
     })
-    console.log("actions", index);
+    console.log("actions", id);
   }
 
   //Reuse createSitter?
-  updateSitter(sitter: Sitter, index: number): void {
+  updateSitter(sitter: Sitter): void { //index: number
     this.ngRedux.dispatch({
       type: SittersActions.UPDATE_EXISTING_SITTER,
-      payload: {index: Number, sitter: Sitter} //delete types?
+      payload: sitter//{index, sitter} //delete types?
     })
   }
 
-  deleteSitter(index: number): void { //satisfy API
+  deleteSitter(id: string): void { //satisfy API. (index: number)
     this.ngRedux.dispatch({
       type: SittersActions.DELETE_EXISTING_SITTER,
-      payload: index
+      payload: id
     })
   }
 
