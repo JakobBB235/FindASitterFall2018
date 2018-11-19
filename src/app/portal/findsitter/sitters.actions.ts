@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { Sitter } from 'src/app/entities/sitter';
+import { ApiService } from 'src/app/services/api.service';
 
 @Injectable({ providedIn: 'root'})
 
@@ -9,7 +10,7 @@ import { Sitter } from 'src/app/entities/sitter';
 export class SittersActions {
 
 // We depencency inject the redux library.
-constructor (private ngRedux: NgRedux<IAppState>) {} 
+constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService) {} 
 
   // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
@@ -29,17 +30,30 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
   }
 
   createSitter(sitter: Sitter): void {
-    this.ngRedux.dispatch({
-      type: SittersActions.REGISTER_NEW_SITTER,
-      payload: sitter
-    })
+    console.log("1");
+    this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
+      console.log("3");
+      this.ngRedux.dispatch({
+        type: SittersActions.REGISTER_NEW_SITTER,
+        payload: sitter
+      });
+    }, error => {
+      console.log("3");
+    }); 
+    console.log("2");
+    //1 -> 2 -> 3 Async
+
+    // this.ngRedux.dispatch({
+    //   type: SittersActions.REGISTER_NEW_SITTER,
+    //   payload: sitter
+    // });
   }
 
   saveId(id: string): void {
     this.ngRedux.dispatch({
       type: SittersActions.SAVE_ID,
       payload: id
-    })
+    });
     console.log("actions", id);
   }
 
@@ -48,20 +62,20 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
     this.ngRedux.dispatch({
       type: SittersActions.UPDATE_EXISTING_SITTER,
       payload: sitter//{index, sitter} //delete types?
-    })
+    });
   }
 
   deleteSitter(id: string): void { //satisfy API. (index: number)
     this.ngRedux.dispatch({
       type: SittersActions.DELETE_EXISTING_SITTER,
       payload: id
-    })
+    });
   }
 
   enableAdminAuthority(): void {
     this.ngRedux.dispatch({
       type: SittersActions.DELETE_EXISTING_SITTER,
       payload: true
-    })
+    });
   }
 }

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'http://angular2api1.azurewebsites.net/api/internships'
 };
