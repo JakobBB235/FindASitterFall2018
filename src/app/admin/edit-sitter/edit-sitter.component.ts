@@ -4,6 +4,7 @@ import { SittersActions } from 'src/app/portal/findsitter/sitters.actions';
 import { Validators, FormBuilder } from '@angular/forms';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-sitter',
@@ -16,7 +17,7 @@ export class EditSitterComponent implements OnInit {
   sitterToBeEdited: Sitter; //get from store?
   itemId: string;
 
-  constructor(private fb: FormBuilder, private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
+  constructor(private fb: FormBuilder, private router: Router, private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
@@ -63,8 +64,6 @@ export class EditSitterComponent implements OnInit {
     //Easy way, cast to sitter:
     let sitter = editSitterForm.value as Sitter;
     this.sittersActions.updateSitter(sitter);
-
-    //nav til router: dep inject Router. this.router.navigate("/path")
+    this.router.navigate(['/home/findsitter']);
   }
-
 }

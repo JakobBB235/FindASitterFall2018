@@ -26,12 +26,10 @@ export class FindsitterComponent implements OnInit {
   }
 
   onSitterEditClicked(id: string) { //sitter: Sitter, 
-      // console.log("Someone clicked sitter", sitter);
       console.log(id);
       console.log("HEJ");
       this.sittersActions.saveId(id);
       this.router.navigate(['/admin/edit-sitter']);
-      // this.sittersActions.updateSitter(sitter, index);
   }
 
   onSitterDeleteClicked(id: string) { //FIX

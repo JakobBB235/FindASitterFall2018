@@ -34,24 +34,23 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             console.log("reducer", action.payload);
             return tassign(state, { itemId: action.payload })
         case SittersActions.UPDATE_EXISTING_SITTER: //Not working
-            // let sitter = state.sitters.find(action.payload);
-            let sitter = state.sitters[action.payload.index]
-            let updatedSitter = {
-                ...sitter,                
-                ...action.payload.sitter
-            };
-            let sitters = [...state.sitters];
-            sitters[action.payload.index] = updatedSitter;
-            return {
-                ...state, sitters: sitters
-            }
-        case SittersActions.DELETE_EXISTING_SITTER: //Not working
             //OLD
-            // let sitterList = state.sitters;
-            // sitterList.splice(action.payload, 1); // action.payload is the index. removes 1 element
-            // return tassign(state, {  })
+            // let sitter = state.sitters[action.payload.index]
+            // let updatedSitter = {
+            //     ...sitter,                
+            //     ...action.payload.sitter
+            // };
+            // let sitters = [...state.sitters];
+            // sitters[action.payload.index] = updatedSitter;
+            // return {
+            //     ...state, sitters: sitters
+            // }
 
             //NEW
+            let sitterList = state.sitters.filter(sitter => sitter._id !== action.payload._id);
+            sitterList.push(action.payload);
+            return tassign(state, { sitters: sitterList})
+        case SittersActions.DELETE_EXISTING_SITTER:
             return tassign(state, { sitters: state.sitters.filter(sitter => sitter._id !== action.payload) });
         case SittersActions.ENABLE_ADMIN_AUTHORITY:
             return tassign(state, { isAdmin: action.payload })
