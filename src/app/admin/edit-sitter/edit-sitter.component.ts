@@ -32,7 +32,10 @@ export class EditSitterComponent implements OnInit {
 
     this.editSitterForm = this.fb.group(
     {
-      name: ['', [Validators.required, Validators.maxLength(100)]],
+      username:['', Validators.required],
+      password:['', Validators.required],
+
+      name: ['', [Validators.required, Validators.maxLength(100)]], // '' -> this.sitterToBeEdited.name?
       female: ['', Validators.required],
       birthDate: ['', Validators.required],
       noCriminalRecord: ['', Validators.required],
@@ -42,6 +45,9 @@ export class EditSitterComponent implements OnInit {
       zipCode: ['', Validators.required],
       city: ['', Validators.required]
     });
+
+    this.editSitterForm.setValue(this.sitterToBeEdited); //Only works if all attribues are a part of form
+    // this.editSitterForm.get('name').setValue(this.sitterToBeEdited.name) //Sets value of single attribute
   }
 
   onSubmit(editSitterForm){

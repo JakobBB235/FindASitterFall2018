@@ -5,8 +5,26 @@
 <h1>Edit Baby Sitter</h1>
 
 <form novalidate [formGroup]="editSitterForm" (ngSubmit)="onSubmit(editSitterForm)">
+
+    <!-- DELETE -->
+        <!-- <mat-form-field class="example-full-width">
+                <input matInput type="text" id="usernameId" placeholder="Username" formControlName="username">
+            </mat-form-field><br>
+            <div *ngIf='editSitterForm.controls.username.touched && editSitterForm.controls.username.errors?.required'> 
+                Username must be filled out
+            </div>
+          
+            <mat-form-field class="example-full-width">
+                <input matInput type="password" id="passwordId" placeholder="Password" formControlName="password">
+            </mat-form-field><br>
+            <div *ngIf='editSitterForm.controls.password.touched && editSitterForm.controls.password.errors?.required'> 
+                Password must be filled out
+            </div> -->
+            
+            
+
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value="{{sitterToBeEdited.name}}" id="nameId" placeholder="Name" formControlName="name">
+      <input matInput type="text" id="nameId" placeholder="Name" formControlName="name"> <!--value="{{sitterToBeEdited.name}}" -->
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.name.touched && editSitterForm.controls.name.errors?.required'> 
       Name must be filled out
@@ -23,7 +41,7 @@
   </div>
 
   <mat-form-field>
-        <input matInput [matDatepicker]="picker" value="{{sitterToBeEdited.birthDate}}" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+        <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
   </mat-form-field><br>
@@ -52,28 +70,28 @@
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="number" value="{{sitterToBeEdited.hourlyWage}}" id="hourlywageId" placeholder="Hourly Wage" formControlName="hourlyWage">
+      <input matInput type="number" id="hourlywageId" placeholder="Hourly Wage" formControlName="hourlyWage">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.hourlyWage.touched && editSitterForm.controls.name.errors?.required'> 
         Hourly wage Must be filled out
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value="{{sitterToBeEdited.address}}" id="addressId" placeholder="Address" formControlName="address">
+      <input matInput type="text" id="addressId" placeholder="Address" formControlName="address">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.address.touched && editSitterForm.controls.name.errors?.required'> 
         Address must be filled out
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="number" value="sitterToBeEdited.zipCode" id="zipcodeId" placeholder="Zip Code" formControlName="zipCode">
+      <input matInput type="number" id="zipcodeId" placeholder="Zip Code" formControlName="zipCode">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.zipCode.touched && editSitterForm.controls.name.errors?.required'> 
         Zip Code must be filled out
   </div>
 
   <mat-form-field class="example-full-width">
-      <input matInput type="text" value="{{sitterToBeEdited.city}}" id="cityId" placeholder="City" formControlName="city">
+      <input matInput type="text" id="cityId" placeholder="City" formControlName="city">
   </mat-form-field><br>
   <div *ngIf='editSitterForm.controls.city.touched && editSitterForm.controls.name.errors?.required'> 
         City must be filled out

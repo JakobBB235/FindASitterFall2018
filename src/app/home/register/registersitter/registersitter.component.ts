@@ -63,9 +63,9 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TempDataService } from '../../../temp-data.service';
 import { Sitter } from '../../../entities/sitter';
 import { SittersActions } from 'src/app/portal/findsitter/sitters.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registersitter',
@@ -76,7 +76,7 @@ export class RegistersitterComponent implements OnInit {
 
   registerSitterForm;
 
-  constructor(private fb: FormBuilder, private tempData: TempDataService, private sittersActions: SittersActions) { } //Added sittersactions
+  constructor(private fb: FormBuilder, private router: Router, private sittersActions: SittersActions) { } //Added sittersactions
 
   ngOnInit() { 
     this.registerSitterForm = this.fb.group(
@@ -121,10 +121,7 @@ export class RegistersitterComponent implements OnInit {
 
     //Easy way, cast to sitter:
     let sitter = registerSitterForm.value as Sitter;
-
-    // this.tempData.addSitter(theSitter); //pass object to tempdata
-    this.sittersActions.createSitter(sitter);
-
-    //nav til router: dep inject Router. this.router.navigate("/path")
+    this.sittersActions.createSitter(sitter); 
+    this.router.navigate(['/login']); //Navigate to loginpage. Might conflict with e2e test
   }
 }

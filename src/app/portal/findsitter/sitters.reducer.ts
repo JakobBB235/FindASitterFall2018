@@ -2,8 +2,10 @@ import { SittersActions } from './sitters.actions';
 import { SittersState } from '../../store';
 import { tassign } from 'tassign';
 import { Sitter } from 'src/app/entities/sitter';
+import { InitialStateService } from 'src/app/services/initial-state.service';
 
-const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: [], itemIndex: undefined}
+// const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: [], itemIndex: undefined, isAdmin: undefined}
+const INITIAL_STATE: SittersState = InitialStateService.getInitialSitterTestState();
 
 // My reducer functions are responsible for changing state, by copying and 
 // changing the copy, since state is immutable.
@@ -31,7 +33,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
         case SittersActions.SAVE_INDEX:
             console.log("reducer", action.payload);
             return tassign(state, { itemIndex: action.payload })
-        case SittersActions.UPDATE_EXISTING_SITTER:
+        case SittersActions.UPDATE_EXISTING_SITTER: //Not working
             // let sitter = state.sitters.find(action.payload);
             let sitter = state.sitters[action.payload.index]
             let updatedSitter = {
@@ -43,6 +45,16 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             return {
                 ...state, sitters: sitters
             }
+        case SittersActions.DELETE_EXISTING_SITTER: //Not working
+            //OLD
+            // let sitterList = state.sitters;
+            // sitterList.splice(action.payload, 1); // action.payload is the index. removes 1 element
+            // return tassign(state, {  })
+
+            //NEW
+            // return tassign(state, { sitter: state.sitters.filter(sitter => sitter._id !== action.payload) });
+        case SittersActions.ENABLE_ADMIN_AUTHORITY:
+            return tassign(state, { isAdmin: action.payload })
         default:
             return state;
     }

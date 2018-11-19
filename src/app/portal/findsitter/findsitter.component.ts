@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TempDataService } from '../../temp-data.service';
 import { Sitter } from '../../entities/sitter';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/store';
@@ -9,26 +8,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-findsitter',
   templateUrl: './findsitter.component.html',
-  styleUrls: ['./findsitter.component.scss']
+  styleUrls: ['./findsitter.component.scss'],
+  // providers: [TempDataService] //Delete? Tells angular how to create it
 })
 export class FindsitterComponent implements OnInit {
 
   sitters: Sitter[];
+  isAdmin: boolean = false;
 
-  constructor(private tempData: TempDataService, private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions, private router: Router) { }
+  constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions, private router: Router) { }
 
   ngOnInit() {
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.sitters = data.sitters;
+      this.isAdmin = data.isAdmin;
     });
   }
 
-  onSitterEditClicked(sitter: Sitter, index: number) {
-      console.log("Someone clicked sitter", sitter);
+  onSitterEditClicked(index: number) { //sitter: Sitter, 
+      // console.log("Someone clicked sitter", sitter);
       console.log(index);
       console.log("HEJ")
       this.sittersActions.saveIndex(index);
       this.router.navigate(['/admin/edit-sitter']) 
       // this.sittersActions.updateSitter(sitter, index);
+  }
+
+  onSitterDeleteClicked(index: number) {
+    this.sittersActions.deleteSitter(index);
   }
 }

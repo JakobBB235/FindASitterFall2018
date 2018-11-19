@@ -16,6 +16,8 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
   static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER'; //Create
   static SAVE_INDEX: string = 'SAVE_INDEX'; //Save index of item about to be updated/deleted
   static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
+  static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
+  static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -46,6 +48,20 @@ constructor (private ngRedux: NgRedux<IAppState>) {}
     this.ngRedux.dispatch({
       type: SittersActions.UPDATE_EXISTING_SITTER,
       payload: {index: Number, sitter: Sitter} //delete types?
+    })
+  }
+
+  deleteSitter(index: number): void { //satisfy API
+    this.ngRedux.dispatch({
+      type: SittersActions.DELETE_EXISTING_SITTER,
+      payload: index
+    })
+  }
+
+  enableAdminAuthority(): void {
+    this.ngRedux.dispatch({
+      type: SittersActions.DELETE_EXISTING_SITTER,
+      payload: true
     })
   }
 }

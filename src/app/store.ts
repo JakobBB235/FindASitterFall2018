@@ -7,6 +7,7 @@ export class SittersState {
 isBaby: boolean;
 sitters: Sitter[];
 itemIndex: number;
+isAdmin: boolean; //= false;
 }
 
 // My app's state is defined here. Every variable that my application needs,

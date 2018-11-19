@@ -40,7 +40,19 @@
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <ul id="testLoop2">
+    <ul *ngIf="!adminUser" id="testLoop2"> 
+      <li><strong>Female :</strong> {{sitter.female}}</li>
+      <li><strong>Birthdate :</strong> {{sitter.birthDate}}</li>
+      <li><strong>No Criminal Record :</strong> {{sitter.noCriminalRecord}}</li>
+      <li><strong>Child Record :</strong> {{sitter.noChildRecord}}</li>
+      <li><strong>Hourly Wage :</strong> {{sitter.hourlyWage}} </li>
+      <li><strong>Address :</strong> {{sitter.address}}</li>
+      <li><strong>Zip Code :</strong> {{sitter.zipCode}}</li>
+      <li><strong>City :</strong> {{sitter.city}}</li>
+    </ul>
+
+    <!-- Write input fields? -->
+    <!-- <ul *ngIf="isAdmin" id="testLoop2"> 
       <li>Female : {{sitter.female}}</li>
       <li>Birthdate : {{sitter.birthDate}}</li>
       <li>No Criminal Record : {{sitter.noCriminalRecord}}</li>
@@ -48,12 +60,16 @@
       <li>Hourly Wage : {{sitter.hourlyWage}} </li>
       <li>Address : {{sitter.address}}</li>
       <li>Zip Code : {{sitter.zipCode}}</li>
-      <li>City : {{sitter.city}}</li>
-    </ul>
+      <li>City : {{sitter.city}}</li> -->
+      <!-- <app-edit-sitter></app-edit-sitter> -->
+    <!-- </ul> -->
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button (click)="onSitterEditClicked(sitter, i)">Edit</button>
+    <button mat-button>RATE</button>
+    <div *ngIf="isAdmin">
+        <button mat-button (click)="onSitterEditClicked(sitter, i)">EDIT</button>
+        <button mat-button (click)="onSitterDeleteClicked(i)">DELETE</button>
+    </div>
   </mat-card-actions>
 </mat-card>
 <!-- TEST -->

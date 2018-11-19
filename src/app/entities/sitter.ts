@@ -1,4 +1,5 @@
 export class Sitter {
+    _id: string;
     /*private*/ username: String;
     /*private*/ password: String;
     /*private*/ name: String;
@@ -12,11 +13,11 @@ export class Sitter {
     /*private*/ city: String;
 
     //private calendar: any; //we don't know the type yet
-    ratings?: Rating[]
+    // ratings?: Rating[]
 }
 
-export class Rating {
-    rating: number; //1-5
-    description: String;
-    babyId: number; //username
-}
+// export class Rating {
+//     rating: number; //1-5
+//     description: String;
+//     babyId: number; //username
+// }

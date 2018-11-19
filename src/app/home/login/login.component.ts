@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { SittersActions } from 'src/app/portal/findsitter/sitters.actions';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { AuthService } from '../../auth/auth.service';
 export class LoginComponent implements OnInit {
   // private fb: FormBuilder; //Manuelt
   loginForm;
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { } //Dependency injection, reactive form
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private sittersActions: SittersActions) { } //Dependency injection, reactive form
 
   ngOnInit() {
     this.loginForm = this.fb.group(
@@ -29,13 +31,19 @@ export class LoginComponent implements OnInit {
     //   this.authService.login().subscribe(result => {
     //   this.router.navigate(['/portal']);
     // }); //Subscribe!
-
+  
+    if(loginForm.username == "admin" && loginForm.password == "aD_min123"){ //Not working
+      console.log("Admin Authority");
+      this.sittersActions.enableAdminAuthority();
+      // this.router.navigate(['/admin']);
+    }
+    console.log(loginForm);
     //NEW
     this.authService.login().subscribe(result => {
-      if(loginForm.username == "admin" && loginForm.password == "aD_min123")
-        this.router.navigate(['/admin']);
-      else
-        this.router.navigate(['/portal']);
+      console.log("Logged in as user");
+      console.log(loginForm.username);
+      // else
+      this.router.navigate(['/portal']);
     }); //Subscribe!
       
       //Route to portal site
