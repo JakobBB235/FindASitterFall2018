@@ -71,10 +71,20 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   }
 
   deleteSitter(id: string): void { //satisfy API. (index: number)
-    this.ngRedux.dispatch({
-      type: SittersActions.DELETE_EXISTING_SITTER,
-      payload: id
-    });
+    // this.ngRedux.dispatch({
+    //   type: SittersActions.DELETE_EXISTING_SITTER,
+    //   payload: id
+    // });
+
+    this.apiService.deleteSitter(id).subscribe(response => { //Subscribing is needed to make it work. //delete from DB
+      console.log("Response", response)
+      this.ngRedux.dispatch({
+        type: SittersActions.DELETE_EXISTING_SITTER,
+        payload: id
+      });
+    }, error => {
+      console.log("Error! Sitter was not deleted");
+    }); 
   }
 
   enableAdminAuthority(): void {

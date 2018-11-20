@@ -23,4 +23,10 @@ export class ApiService {
     Middleware. rxJs
     Angular expects json to be returned from webservice. this can be changed.{responseType: "text"}
   */
+
+  
+  deleteSitter(_id: string){
+    console.log(environment.apiUrl + "/DELETE/", _id);
+    return this.http.post(environment.apiUrl + "/DELETE/", _id);
+  }
 }
