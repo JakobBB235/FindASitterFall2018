@@ -21,15 +21,24 @@ export class FindsitterComponent implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit() {
+    // this.sittersActions.getAllSitters();
+
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.sitters = data.sitters;
       this.isAdmin = data.isAdmin;
+
+      console.log(this.sitters);
     });
 
     //This makes the data visible in the network tab in chrome browser.
-    this.apiService.getAllSitters().subscribe(responseFromApi => {
-      console.log(responseFromApi);
-    });
+    // this.apiService.getAllSitters().subscribe(responseFromApi => {
+    //   console.log(responseFromApi);
+    // });
+
+    // this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => {
+    //   const myData = responseFromApi.filter(x => x.customerId === 'jak123');
+    //   console.log(myData);
+    // });
   }
 
   onSitterEditClicked(id: string) { //sitter: Sitter, 

@@ -54,6 +54,10 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             return tassign(state, { sitters: state.sitters.filter(sitter => sitter._id !== action.payload) });
         case SittersActions.ENABLE_ADMIN_AUTHORITY:
             return tassign(state, { isAdmin: action.payload })
+        case SittersActions.GET_ALL_SITTERS: 
+            //Write logic. if same logic reuse create method?
+            // return tassign(state, { sitters: [...state.sitters, ...action.payload]});
+            return tassign(state, { sitters: [...state.sitters.filter(sitter => sitter.customerId !== 'jak123'), ...action.payload]})
         default:
             return state;
     }

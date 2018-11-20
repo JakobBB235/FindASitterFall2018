@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SittersActions } from './findsitter/sitters.actions';
 
 @Component({
   selector: 'app-portal',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sittersActions: SittersActions) { }
 
   ngOnInit() {
+    this.sittersActions.getAllSitters();
   }
 
 }

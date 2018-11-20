@@ -32,6 +32,7 @@ export class EditSitterComponent implements OnInit {
 
     this.editSitterForm = this.fb.group(
     {
+      customerId:['', Validators.required], //REMOVE?
       _id:['', Validators.required], //REMOVE?
       username:['', Validators.required],
       password:['', Validators.required],

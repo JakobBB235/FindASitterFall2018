@@ -15,7 +15,8 @@ export class ApiService {
 
   createSitter(sitter: Sitter){ //save sitter in the action method?
     //For at komme uden om et problem(dårlig api?)
-    // sitter.customerId = "chrk"; + Definer attribut i sitter entity. skriv kode i action metoden hvor man filtrerer efter dette.
+    sitter.customerId = "jak123"; // Why does this attribute not show in API?
+    console.log("createtest");
     return this.http.post(environment.apiUrl + "/create", sitter, {responseType: "text"});
   }
   /*

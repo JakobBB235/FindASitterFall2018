@@ -19,6 +19,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
   static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
+  static GET_ALL_SITTERS: string = 'GET_ALL_SITTERS';
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -33,6 +34,9 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     console.log("1");
     this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
+      console.log("CustomerID is: ", sitter.customerId); //
+      console.log("Response", response)
+
       this.ngRedux.dispatch({
         type: SittersActions.REGISTER_NEW_SITTER,
         payload: sitter
@@ -49,6 +53,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     // });
   }
 
+  //Pathvariable is the best solution?
   saveId(id: string): void {
     this.ngRedux.dispatch({
       type: SittersActions.SAVE_ID,
@@ -76,6 +81,19 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     this.ngRedux.dispatch({
       type: SittersActions.DELETE_EXISTING_SITTER,
       payload: true
+    });
+  }
+
+  getAllSitters(): void {
+    //Check chrk github.
+    this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
+      const myData = responseFromApi.filter(x => x.customerId === 'jak123');
+      console.log(myData);
+
+      this.ngRedux.dispatch({
+        type: SittersActions.GET_ALL_SITTERS,
+        payload: myData //What is the payload?
+      });
     });
   }
 }

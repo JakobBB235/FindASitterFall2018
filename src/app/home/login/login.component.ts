@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     //NEW
     this.authService.login().subscribe(result => {
       console.log("Logged in as user");
-      console.log(loginForm.username);
+      // console.log(loginForm.username);
       // else
       this.router.navigate(['/portal']);
     }); //Subscribe!

@@ -1,16 +1,19 @@
 export class Sitter {
-    _id: string;
-    /*private*/ username: String;
-    /*private*/ password: String;
-    /*private*/ name: String;
-    /*private*/ female: Boolean; //female if true, male if false
+
+    //Should String wrapper object or string be used? same with boolean and number
+    customerId?: string;
+    _id?: string; //string remove ?
+    /*private*/ username: string;
+    /*private*/ password: string;
+    /*private*/ name: string;
+    /*private*/ female: boolean; //female if true, male if false
     /*private*/ birthDate: Date; //js date
-    /*private*/ noCriminalRecord: Boolean; //clean record if true
-    /*private*/ noChildRecord: Boolean; //not a child molestor if true
-    /*private*/ hourlyWage: Number;
-    /*private*/ address: String;
-    /*private*/ zipCode: String;
-    /*private*/ city: String;
+    /*private*/ noCriminalRecord: boolean; //clean record if true
+    /*private*/ noChildRecord: boolean; //not a child molestor if true
+    /*private*/ hourlyWage: number;
+    /*private*/ address: string;
+    /*private*/ zipCode: string;
+    /*private*/ city: string;
 
     //private calendar: any; //we don't know the type yet
     // ratings?: Rating[]
