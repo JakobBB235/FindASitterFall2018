@@ -35,14 +35,14 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
       console.log("CustomerID is: ", sitter.customerId); //
-      console.log("Response", response)
+      console.log("Response", response) //response is actually a sitter object. pass on to reducer method as payload?
 
       this.ngRedux.dispatch({
         type: SittersActions.REGISTER_NEW_SITTER,
         payload: sitter
       });
     }, error => {
-      console.log(error);
+      console.log("Error! Sitter was not created", error);
     }); 
     console.log("2");
     //1 -> 2 -> 3 Async
@@ -64,9 +64,19 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 
   //Reuse createSitter?
   updateSitter(sitter: Sitter): void { //index: number
-    this.ngRedux.dispatch({
-      type: SittersActions.UPDATE_EXISTING_SITTER,
-      payload: sitter//{index, sitter} //delete types?
+    // this.ngRedux.dispatch({
+    //   type: SittersActions.UPDATE_EXISTING_SITTER,
+    //   payload: sitter//{index, sitter} //delete types?
+    // });
+
+    this.apiService.updateSitter(sitter).subscribe(response => {
+      console.log("Response", response);
+      this.ngRedux.dispatch({
+        type: SittersActions.UPDATE_EXISTING_SITTER,
+        payload: sitter//{index, sitter} //delete types?
+      });
+    }, error => {
+      console.log("Error! Sitter was not updated", error);
     });
   }
 
@@ -83,7 +93,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
         payload: id
       });
     }, error => {
-      console.log("Error! Sitter was not deleted");
+      console.log("Error! Sitter was not deleted", error);
     }); 
   }
 
@@ -94,6 +104,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     });
   }
 
+  //Gets all sitters from API
   getAllSitters(): void {
     //Check chrk github.
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 

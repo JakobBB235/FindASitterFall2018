@@ -52,7 +52,7 @@ export class ApiService {
     return this.http.delete(environment.apiUrl + "/" + _id);
   }
 
-  updateSitter(_id: string, sitter: Sitter){
-    return this.http.put(environment.apiUrl + "/" + _id, sitter);
+  updateSitter(sitter: Sitter){ //sitter has the id
+    return this.http.put(environment.apiUrl + "/" + sitter._id, sitter);
   }
 }

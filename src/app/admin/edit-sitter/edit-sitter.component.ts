@@ -60,6 +60,6 @@ export class EditSitterComponent implements OnInit {
     //Easy way, cast to sitter:
     let sitter = editSitterForm.value as Sitter;
     this.sittersActions.updateSitter(sitter);
-    this.router.navigate(['/home/findsitter']);
+    this.router.navigate(['/portal/findsitter']);
   }
 }
