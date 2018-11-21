@@ -1,6 +1,7 @@
 export class Sitter {
 
     //Should String wrapper object or string be used? same with boolean and number
+    // ? means optional?
     customerId?: string;
     _id?: string; //string remove ?
     /*private*/ username: string;

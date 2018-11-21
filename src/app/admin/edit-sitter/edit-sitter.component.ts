@@ -21,13 +21,8 @@ export class EditSitterComponent implements OnInit {
 
   ngOnInit() {
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
-      //OLD
-      // this.index = data.itemIndex;
-      // this.sitterToBeEdited = data.sitters[data.itemIndex];
-      // console.log(this.sitterToBeEdited.name);
-      // console.log(data.itemIndex);
       this.itemId = data.itemId;
-      this.sitterToBeEdited = data.sitters.find(sitter => sitter._id == data.itemId);//.filter(sitter => sitter._id == data.itemId)//Or itemId
+      this.sitterToBeEdited = data.sitters.find(sitter => sitter._id == data.itemId);
     });
 
     this.editSitterForm = this.fb.group(

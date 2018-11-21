@@ -6,7 +6,7 @@ import { Sitter } from './entities/sitter';
 export class SittersState {
 isBaby: boolean;
 sitters: Sitter[];
-itemId: string;
+itemId: string; //used for updating a specific sitter or baby. use pathvariable instead?
 isAdmin: boolean; //= false;
 }
 

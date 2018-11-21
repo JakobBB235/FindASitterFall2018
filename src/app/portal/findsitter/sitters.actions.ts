@@ -102,7 +102,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 
       this.ngRedux.dispatch({
         type: SittersActions.GET_ALL_SITTERS,
-        payload: myData //What is the payload?
+        payload: myData 
       });
     });
   }
