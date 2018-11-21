@@ -42,7 +42,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
         payload: sitter
       });
     }, error => {
-      console.log("3");
+      console.log(error);
     }); 
     console.log("2");
     //1 -> 2 -> 3 Async

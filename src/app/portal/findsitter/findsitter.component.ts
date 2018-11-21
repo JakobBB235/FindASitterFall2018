@@ -21,7 +21,7 @@ export class FindsitterComponent implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit() {
-    // this.sittersActions.getAllSitters();
+    this.sittersActions.getAllSitters();
 
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.sitters = data.sitters;

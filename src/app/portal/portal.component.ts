@@ -11,7 +11,7 @@ export class PortalComponent implements OnInit {
   constructor(private sittersActions: SittersActions) { }
 
   ngOnInit() {
-    this.sittersActions.getAllSitters();
+    // this.sittersActions.getAllSitters();
   }
 
 }
