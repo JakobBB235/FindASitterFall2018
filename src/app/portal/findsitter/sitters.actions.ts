@@ -39,7 +39,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 
       this.ngRedux.dispatch({
         type: SittersActions.REGISTER_NEW_SITTER,
-        payload: sitter
+        payload: sitter //response
       });
     }, error => {
       console.log("Error! Sitter was not created", error);
@@ -66,14 +66,14 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   updateSitter(sitter: Sitter): void { //index: number
     // this.ngRedux.dispatch({
     //   type: SittersActions.UPDATE_EXISTING_SITTER,
-    //   payload: sitter//{index, sitter} //delete types?
+    //   payload: sitter
     // });
 
     this.apiService.updateSitter(sitter).subscribe(response => {
       console.log("Response", response);
       this.ngRedux.dispatch({
         type: SittersActions.UPDATE_EXISTING_SITTER,
-        payload: sitter//{index, sitter} //delete types?
+        payload: sitter //response
       });
     }, error => {
       console.log("Error! Sitter was not updated", error);
@@ -92,14 +92,14 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
         type: SittersActions.DELETE_EXISTING_SITTER,
         payload: id
       });
-    }, error => {
+    }, error => { //For some reason this always results in error, however sitter is still deleted
       console.log("Error! Sitter was not deleted", error);
     }); 
   }
 
   enableAdminAuthority(): void {
     this.ngRedux.dispatch({
-      type: SittersActions.DELETE_EXISTING_SITTER,
+      type: SittersActions.ENABLE_ADMIN_AUTHORITY,
       payload: true
     });
   }

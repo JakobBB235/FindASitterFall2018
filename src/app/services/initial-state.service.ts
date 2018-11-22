@@ -25,4 +25,26 @@ export class InitialStateService {
   // public addSitter(sitter: Sitter): void {
   //   this.sitters.push(sitter);
   // }
+
+  public static getInitialParentTestState(){
+    return { parents: [ //CUSTOMERID = jak1234 in webservice it is jak123
+      {customerId: 'jak1234', _id: '1p', username: 'Caroline', password: 'secret', name: 'Caroline', female: true,
+      address: 'some', zipCode: '2600', city: 'Glostrup', 
+      kids: [ {_id: '1k', name: 'Emil', female: false, birthDate: new Date(2016, 5, 14), specialNeeds: 'Alergi'}]
+      },
+
+      {customerId: 'jak1234', _id: '2p', username: 'frank', password: 'secret', name: 'Frank', female: false,
+      address: 'some', zipCode: '2600', city: 'Glostrup', kids: [ 
+        {_id: '2k', name: 'Sarah', female: true, birthDate: new Date(2015, 5, 14)},
+        {_id: '3k', name: 'Sofie', female: true, birthDate: new Date(2016, 5, 14)}
+      ]},
+
+      {customerId: 'jak1234', _id: '3p', username: 'jan', password: 'secret', name: 'Jan', female: false,
+      address: 'some', zipCode: '2600', city: 'Glostrup', kids: [ 
+        {_id: '4k', name: 'John', female: false, birthDate: new Date(2014, 5, 14)},
+        {_id: '5k', name: 'Brian', female: false, birthDate: new Date(2015, 5, 14)},
+        {_id: '6k', name: 'Jens', female: false, birthDate: new Date(2016, 5, 14), specialNeeds: 'XL bleer'}
+      ]}
+    ], itemId: undefined };
+  }
 }

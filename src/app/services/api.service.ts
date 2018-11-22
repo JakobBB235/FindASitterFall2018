@@ -41,18 +41,18 @@ export class ApiService {
     return this.http.get(environment.apiUrl);
   }
 
-  createSitter(sitter: Sitter){ 
+  createSitter(sitter: any){ //Sitter / any
     sitter.customerId = "jak123"; // Why does this attribute not show in API?
     return this.http.post(environment.apiUrl, sitter);
   }
 
-  deleteSitter(_id: string){
+  deleteSitter(_id: string){ 
     console.log("delete method called");
     console.log(environment.apiUrl + "/" + _id);
-    return this.http.delete(environment.apiUrl + "/" + _id);
+    return this.http.delete(environment.apiUrl + "/" + _id); 
   }
 
-  updateSitter(sitter: Sitter){ //sitter has the id
+  updateSitter(sitter: any){ //sitter has the id. //Sitter / any
     return this.http.put(environment.apiUrl + "/" + sitter._id, sitter);
   }
 }

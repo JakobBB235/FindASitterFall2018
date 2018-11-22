@@ -1,11 +1,15 @@
 export class Baby {
-    private username: String;
-    private password: String;
-    private name: String;
-    private female: Boolean; //female if true, male if false
-    private birthDate: Date; //js date
-    private specialNeeds: String;
-    private address: String;
-    private zipCode: String;
-    private city: String;
+    customerId?: string;
+    _id?: string; //string remove ?
+    username: string;
+    password: string;
+    name: string;
+    female: boolean; //female if true, male if false
+    birthDate: Date; //js date
+    specialNeeds: string;
+    address: string;
+    zipCode: string;
+    city: string;
+
+    // ratings?: Rating[]
 }
