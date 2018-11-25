@@ -31,6 +31,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 //   }
 
   createParent(parent: Parent): void {
+    parent.customerId = "jakparent"; 
+
     console.log("1");
     this.apiService.createSitter(parent).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
@@ -91,7 +93,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   //Gets all parents from API
   getAllParents(): void {
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
-      const myData = responseFromApi.filter(x => x.customerId === 'jak123');
+      const myData = responseFromApi.filter(x => x.customerId === 'jakparent');
       console.log(myData);
 
       this.ngRedux.dispatch({

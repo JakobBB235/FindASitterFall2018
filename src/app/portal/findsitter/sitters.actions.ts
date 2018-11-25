@@ -31,6 +31,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   }
 
   createSitter(sitter: Sitter): void {
+    sitter.customerId = "jak123"; 
+    
     console.log("1");
     this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
@@ -106,7 +108,6 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 
   //Gets all sitters from API
   getAllSitters(): void {
-    //Check chrk github.
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
       const myData = responseFromApi.filter(x => x.customerId === 'jak123');
       console.log(myData);

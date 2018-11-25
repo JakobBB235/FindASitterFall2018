@@ -43,7 +43,8 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
         //     return tassign(state, { isAdmin: action.payload })
 
         case ParentsActions.GET_ALL_PARENTS: //action.payload = Parent[] (all parents from API)
-            return tassign(state, { parents: [...state.parents.filter(parent => parent.customerId !== 'jak123'), ...action.payload]})
+            //Filter ensures that multiple instances of the same parent are not added to the state every time
+            return tassign(state, { parents: [...state.parents.filter(parent => parent.customerId !== 'jakparent'), ...action.payload]})
         default:
             return state;
     }

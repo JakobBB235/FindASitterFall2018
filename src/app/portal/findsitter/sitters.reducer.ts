@@ -58,6 +58,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
 
         case SittersActions.GET_ALL_SITTERS: //action.payload = Sitter[] (all sitters from API)
             // return tassign(state, { sitters: [...state.sitters, ...action.payload]});
+            //Filter ensures that multiple instances of the same sitter are not added to the state every time
             return tassign(state, { sitters: [...state.sitters.filter(sitter => sitter.customerId !== 'jak123'), ...action.payload]})
         default:
             return state;

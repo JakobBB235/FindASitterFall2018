@@ -42,7 +42,7 @@ export class ApiService {
   }
 
   createSitter(sitter: any){ //Sitter / any
-    sitter.customerId = "jak123"; // Why does this attribute not show in API?
+    // sitter.customerId = "jak123"; // Why does this attribute not show in API?. Setting customerId in action methods instead
     return this.http.post(environment.apiUrl, sitter);
   }
 
