@@ -11,6 +11,7 @@ export class SittersState {
     sitters: Sitter[];
     itemId: string; //used for updating a specific sitter or baby. use pathvariable instead?
     isAdmin: boolean; //= false;
+    // clickedObject: any; //alternative to itemId
 }
 
 export class ParentsState {

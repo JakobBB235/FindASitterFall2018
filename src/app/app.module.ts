@@ -34,7 +34,11 @@ import { AdminComponent } from './admin/admin.component';
 import { EditSitterComponent } from './admin/edit-sitter/edit-sitter.component'; // Added this to get the root reducer
 
 import { HttpClientModule } from '@angular/common/http';
-import { FindparentComponent } from './portal/findparent/findparent.component' //FIX
+import { FindparentComponent } from './portal/findparent/findparent.component';
+import { ParentDetailsComponent } from './portal/findparent/parent-details/parent-details.component';
+import { EditKidComponent } from './portal/findparent/parent-details/edit-kid/edit-kid.component';
+import { RegisterparentComponent } from './home/register/registerparent/registerparent.component';
+import { CreateKidComponent } from './portal/findparent/parent-details/create-kid/create-kid.component' //FIX
 
 @NgModule({
   declarations: [
@@ -53,7 +57,11 @@ import { FindparentComponent } from './portal/findparent/findparent.component' /
     ManageAccountComponent,
     AdminComponent,
     EditSitterComponent,
-    FindparentComponent
+    FindparentComponent,
+    ParentDetailsComponent,
+    EditKidComponent,
+    RegisterparentComponent,
+    CreateKidComponent
   ],
   imports: [
     BrowserModule,

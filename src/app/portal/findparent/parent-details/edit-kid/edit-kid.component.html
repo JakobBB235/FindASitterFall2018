@@ -1,0 +1,40 @@
+<p>
+  edit-kid works!
+</p>
+
+<form novalidate [formGroup]="KidForm" (ngSubmit)="onSubmit(KidForm)">
+    <mat-form-field class="example-full-width">
+        <input matInput type="text" id="nameId" placeholder="Name of baby" formControlName="name">
+    </mat-form-field><br>
+    <div *ngIf='KidForm.controls.name.touched && KidForm.controls.name.errors?.required'> 
+        Name must be filled out
+    </div>
+  
+    <mat-form-field>
+        <mat-select id="genderId" placeholder="Gender" formControlName="female"> 
+          <mat-option id="genderFemaleId" value="true">Female</mat-option>
+          <mat-option id="genderMaleId" value="false">Male</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <div *ngIf='KidForm.controls.female.touched && KidForm.controls.name.errors?.required'> 
+          Gender must be filled out
+    </div>
+  
+    <mat-form-field>
+          <input matInput [matDatepicker]="picker" id="birthdateId" placeholder="Date of birth" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field><br>
+    <div *ngIf='KidForm.controls.birthDate.touched && KidForm.controls.name.errors?.required'> 
+          Birthdate must be filled out
+    </div>
+    
+    <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Special Needs" formControlName="specialNeeds">
+    </mat-form-field><br>
+    <div *ngIf='KidForm.controls.specialNeeds.touched && KidForm.controls.name.errors?.required'> 
+          Special needs must be filled out
+    </div>
+  
+    <button mat-flat-button type="submit" color="primary">Register</button>
+  </form>

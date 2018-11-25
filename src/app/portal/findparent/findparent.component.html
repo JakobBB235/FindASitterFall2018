@@ -1,3 +1,45 @@
 <p>
   findparent works!
 </p>
+
+<!-- OLD -->
+<!-- <mat-card *ngFor="let sitter of tempData.sitters" class="example-card" id="testLoop">
+  <app-displaysitter [sitter]="sitter" 
+    (sitterEditClicked)="onSitterEditClicked($event)">
+  </app-displaysitter>
+</mat-card> -->
+
+
+<!--OLD 2-->
+<!-- <mat-card *ngFor="let sitter of sitters; let i = index" class="example-card" id="testLoop">
+  <app-displaysitter [sitter]="sitter" 
+    (sitterEditClicked)="onSitterEditClicked($event, index)"> 
+  </app-displaysitter>
+</mat-card> -->
+
+
+<mat-card *ngFor="let parent of parents; let i = index" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{parent.name}}</mat-card-title>
+    <mat-card-subtitle>Parent</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <ul *ngIf="!adminUser"> 
+      <li><strong>Female :</strong> {{parent.female}}</li>
+      <li><strong>Address :</strong> {{parent.address}}</li>
+      <li><strong>Zip Code :</strong> {{parent.zipCode}}</li>
+      <!-- <li><strong>Number of Kids :</strong> {{parent.kids.length}}</li> -->
+      <li><strong>City :</strong> {{parent.city}}</li>
+    </ul>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onParentDetailsClicked(parent._id)">DETAILS</button>
+    <!-- <div *ngIf="isAdmin"> -->
+        <button mat-button (click)="onParentEditClicked(parent._id)">EDIT</button>
+        <button mat-button (click)="onParentDeleteClicked(parent._id)">DELETE</button>
+    <!-- </div> -->
+  </mat-card-actions>
+</mat-card>

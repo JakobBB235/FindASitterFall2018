@@ -1,0 +1,61 @@
+<p>
+  registerparent works!
+</p>
+
+<h1>Register Parent</h1>
+
+<form novalidate [formGroup]="registerParentForm" (ngSubmit)="onSubmit(registerParentForm)">
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="usernameId" placeholder="Username" formControlName="username">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.username.touched && registerParentForm.controls.username.errors?.required'> 
+      Username must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="password" id="passwordId" placeholder="Password" formControlName="password">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.password.touched && registerParentForm.controls.password.errors?.required'> 
+      Password must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" id="nameId" placeholder="Name of parent" formControlName="name">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.name.touched && registerParentForm.controls.name.errors?.required'> 
+      Name must be filled out
+  </div>
+
+  <mat-form-field>
+      <mat-select id="genderId" placeholder="Gender" formControlName="female"> 
+        <mat-option id="genderFemaleId" value="true">Female</mat-option>
+        <mat-option id="genderMaleId" value="false">Male</mat-option>
+      </mat-select>
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.female.touched && registerParentForm.controls.name.errors?.required'> 
+        Gender must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="Address" formControlName="address">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.address.touched && registerParentForm.controls.name.errors?.required'> 
+        Address must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Zip Code" formControlName="zipCode">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.zipCode.touched && registerParentForm.controls.name.errors?.required'> 
+        Zip code must be filled out
+  </div>
+
+  <mat-form-field class="example-full-width">
+      <input matInput type="text" placeholder="City" formControlName="city">
+  </mat-form-field><br>
+  <div *ngIf='registerParentForm.controls.city.touched && registerParentForm.controls.name.errors?.required'> 
+        City must be filled out
+  </div>
+
+  <button mat-flat-button type="submit" color="primary">Register</button>
+</form>

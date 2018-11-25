@@ -30,7 +30,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 //     })
 //   }
 
-  createSitter(parent: Parent): void {
+  createParent(parent: Parent): void {
     console.log("1");
     this.apiService.createSitter(parent).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
@@ -49,13 +49,13 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   }
 
   //Pathvariable is the best solution?
-//   saveId(id: string): void {
-//     this.ngRedux.dispatch({
-//       type: ParentsActions.SAVE_ID,
-//       payload: id
-//     });
-//     console.log("actions", id);
-//   }
+  saveId(id: string): void {
+    this.ngRedux.dispatch({
+      type: ParentsActions.SAVE_ID,
+      payload: id
+    });
+    console.log("actions", id);
+  }
 
   updateParent(parent: Parent): void { 
     this.apiService.updateSitter(parent).subscribe(response => {
@@ -89,7 +89,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 //   }
 
   //Gets all parents from API
-  getAllBabies(): void {
+  getAllParents(): void {
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
       const myData = responseFromApi.filter(x => x.customerId === 'jak123');
       console.log(myData);

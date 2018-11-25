@@ -13,6 +13,10 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { EditSitterComponent } from './admin/edit-sitter/edit-sitter.component';
+import { FindparentComponent } from './portal/findparent/findparent.component';
+import { ParentDetailsComponent } from './portal/findparent/parent-details/parent-details.component';
+import { EditKidComponent } from './portal/findparent/parent-details/edit-kid/edit-kid.component';
+import { RegisterparentComponent } from './home/register/registerparent/registerparent.component';
 
 // Insert routes here
 const routes: Routes = [
@@ -26,7 +30,8 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent, children:
         [
           {path: 'registerbaby', component: RegisterbabyComponent},
-          {path: 'registersitter', component: RegistersitterComponent}
+          {path: 'registersitter', component: RegistersitterComponent},
+          {path: 'registerparent', component: RegisterparentComponent}
         ]
       }
     ]
@@ -35,8 +40,13 @@ const routes: Routes = [
   // Subrouting children. Has AuthGuard
   {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:
     [
-      {path: 'findbaby', component: FindbabyComponent},
-      {path: 'findsitter', component: FindsitterComponent}
+      {path: 'findbaby', component: FindbabyComponent}, //Disable
+      {path: 'findsitter', component: FindsitterComponent},
+      {path: 'findparent', component: FindparentComponent, children: 
+      [
+        {path: 'parent-details', component: ParentDetailsComponent},
+        {path: 'edit-kid', component: EditKidComponent}
+      ]}
       // {path: 'findsitter/:id', component: EditsitterComponent}
     ]
   },
