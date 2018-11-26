@@ -16,8 +16,8 @@ export class FilterSitters implements PipeTransform {
 
         //FIX
         if(search !== undefined)
-            return items.filter(x => x.name.toLowerCase().includes(search) || 
-            x.zipCode.toLowerCase().includes(search)); //|| x.female.includes(search)  
+            return items.filter(x => x.name.toLowerCase().includes(search.toLowerCase()) || 
+            x.zipCode == search); //|| x.female.includes(search)  
         else
             return items;
     }
@@ -39,12 +39,16 @@ export class GenderFilter implements PipeTransform {
 @Injectable({providedIn: 'root'})
 export class CriminalRecordFilter implements PipeTransform {
     transform(noCriminalRecord: boolean): any{
-
-        console.log(noCriminalRecord);
-        if(noCriminalRecord)
+        let test = noCriminalRecord.toString();
+        console.log('Filtertest', test);
+        if(test === 'true'){
+            console.log("IF", test);
             return "";   
-        else
+        }
+        else if (test === 'false'){
+            console.log("ELSE", test);
             return "Criminal Record";
+        }
     }
 }
 
@@ -52,10 +56,16 @@ export class CriminalRecordFilter implements PipeTransform {
 @Injectable({providedIn: 'root'})
 export class ChildRecordFilter implements PipeTransform {
 
-    transform(noChildRecord: boolean): any{
-        if(noChildRecord)
+    transform(noChildRecord: string): any{
+        let test = noChildRecord.toString();
+        console.log('Filtertest', test);
+        if(test === 'true'){
+            console.log("IF", test);
             return "";   
-        else
+        }
+        else if (test === 'false'){
+            console.log("ELSE", test);
             return "Child Record";
+        }
     }
 }

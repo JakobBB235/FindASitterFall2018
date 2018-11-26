@@ -21,6 +21,7 @@ describe('Sitter search filter', () => {
 
     it('1.0: valid data: Search "Azat Baran" should give 1 resut, Azat Baran', () => {
         //Arrange
+        //Perhaps better to write the get method here so all tests wont break if initialstate is makes them fail.
         const sitters: Sitter[] = InitialStateService.getInitialSitterTestState().sitters;
         const filter: FilterSitters = new FilterSitters();
 
