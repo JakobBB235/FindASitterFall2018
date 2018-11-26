@@ -1,6 +1,6 @@
-<p>
-  findparent works!
-</p>
+<h2>
+  Find a Parent
+</h2>
 
 <!-- OLD -->
 <!-- <mat-card *ngFor="let sitter of tempData.sitters" class="example-card" id="testLoop">
@@ -40,6 +40,7 @@
     <!-- <div *ngIf="isAdmin"> -->
         <button mat-button (click)="onParentEditClicked(parent._id)">EDIT</button>
         <button mat-button (click)="onParentDeleteClicked(parent._id)">DELETE</button>
+        <button mat-button (click)="onKidCreateClicked(parent._id)">CREATE KID</button>
     <!-- </div> -->
   </mat-card-actions>
 </mat-card>

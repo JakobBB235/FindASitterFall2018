@@ -15,6 +15,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   // This gives a strongly typed way to call an action.
   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
   static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER'; //Create
+  static REGISTER_NEW_SITTER_SUCCESS: string = 'REGISTER_NEW_SITTER_SUCCESS'; //Create
+  static REGISTER_NEW_SITTER_FAILURE: string = 'REGISTER_NEW_SITTER_FAILURE'; //Create
   static SAVE_ID: string = 'SAVE_ID'; //Save ID of item about to be updated/deleted
   static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
   static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
@@ -30,21 +32,61 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     })
   }
 
+  // createSitter(sitter: Sitter): void {
+  //   sitter.customerId = "jak123"; 
+
+  //   console.log("1");
+  //   //Action creater calls web service, and dispatches new redux action.
+  //   this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
+  //     console.log("3");
+  //     console.log("CustomerID is: ", sitter.customerId); //
+  //     console.log("Response", response) //response is actually a sitter object. pass on to reducer method as payload?
+
+  //     this.ngRedux.dispatch({
+  //       type: SittersActions.REGISTER_NEW_SITTER,
+  //       payload: sitter //response
+  //     });
+  //   }, error => {
+  //     console.log("Error! Sitter was not created", error);
+  //   }); 
+  //   console.log("2");
+  //   //1 -> 2 -> 3 Async
+
+  //   // this.ngRedux.dispatch({
+  //   //   type: SittersActions.REGISTER_NEW_SITTER,
+  //   //   payload: sitter
+  //   // });
+  // }
   createSitter(sitter: Sitter): void {
     sitter.customerId = "jak123"; 
 
+    //This action is called to set a spinner, showing system is working.
+    this.ngRedux.dispatch({
+      type: SittersActions.REGISTER_NEW_SITTER,
+      // payload: sitter //response. NO PAYLOAD
+    });
+
     console.log("1");
+    //Action creater calls web service, and dispatches new redux action.
     this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
       console.log("CustomerID is: ", sitter.customerId); //
       console.log("Response", response) //response is actually a sitter object. pass on to reducer method as payload?
 
+      //If all goes well.
       this.ngRedux.dispatch({
-        type: SittersActions.REGISTER_NEW_SITTER,
+        type: SittersActions.REGISTER_NEW_SITTER_SUCCESS,
         payload: sitter //response
+        //Response might be missing _id if bad API is used.
       });
     }, error => {
       console.log("Error! Sitter was not created", error);
+
+      //If web service fails.
+      this.ngRedux.dispatch({
+        type: SittersActions.REGISTER_NEW_SITTER_FAILURE,
+        payload: error //response
+      });
     }); 
     console.log("2");
     //1 -> 2 -> 3 Async

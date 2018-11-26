@@ -12,6 +12,8 @@ export class SittersState {
     itemId: string; //used for updating a specific sitter or baby. use pathvariable instead?
     isAdmin: boolean; //= false;
     // clickedObject: any; //alternative to itemId
+
+    isProcessing: boolean; //Spinner
 }
 
 export class ParentsState {

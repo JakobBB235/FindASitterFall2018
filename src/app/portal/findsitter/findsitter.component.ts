@@ -16,7 +16,7 @@ export class FindsitterComponent implements OnInit {
 
   sitters: Sitter[];
   isAdmin: boolean = false;
-  spinnerLoading: boolean = true;
+  isProcessing: boolean = false;
 
   constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions, private router: Router,
     private apiService: ApiService) { }
@@ -24,12 +24,12 @@ export class FindsitterComponent implements OnInit {
   ngOnInit() {
     // this.spinnerLoading = true;
     console.log("TEST2");
-    // this.sittersActions.getAllSitters(); 
+    this.sittersActions.getAllSitters(); 
     // this.sittersActions.getAllSitters().subscribe(() => this.spinnerLoading = false); //async
     // this.spinnerLoading = this.sittersActions.getAllSitters(); //async
-    let res: boolean = this.sittersActions.getAllSitters(); 
-    this.spinnerLoading = res;
-    console.log(res);
+    // let res: boolean = this.sittersActions.getAllSitters(); 
+    // this.spinnerLoading = res;
+    // console.log(res);
     
     console.log("TEST3");
     this.ngRedux.select(x => x.sitters).subscribe((data) => {

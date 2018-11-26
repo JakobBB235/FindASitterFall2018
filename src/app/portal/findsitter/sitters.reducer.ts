@@ -20,9 +20,20 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             return tassign(state, { isBaby: action.payload })//libary tassign. Shows errors and shorter syntax
             // state.isBaby = action.payload; // state mutations : NO NO!!!
 
+        // case SittersActions.REGISTER_NEW_SITTER: //action.payload = Sitter
+        //     // Copies sitters array and adds the new sitter object to the copy
+        //     return tassign(state, { sitters: [...state.sitters, action.payload]})
+
+        // Set spinner
         case SittersActions.REGISTER_NEW_SITTER: //action.payload = Sitter
+            return tassign(state, { isProcessing: true })
+        //If webservice fails
+        case SittersActions.REGISTER_NEW_SITTER_FAILURE:
+            return tassign(state, { isProcessing: false })
+        //If it succeeds   
+        case SittersActions.REGISTER_NEW_SITTER_SUCCESS: //action.payload = Sitter
             // Copies sitters array and adds the new sitter object to the copy
-            return tassign(state, { sitters: [...state.sitters, action.payload]})
+            return tassign(state, { isProcessing: false , sitters: [...state.sitters, action.payload]})
 
         case SittersActions.SAVE_ID: //action.payload = string (id of item)
             return tassign(state, { itemId: action.payload })

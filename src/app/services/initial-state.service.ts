@@ -19,7 +19,7 @@ export class InitialStateService {
 
       {customerId: 'jak1234', _id: '3', username: 'salik', password: 'secret3', name: 'Salik', female: false, birthDate: new Date(1995, 1, 1),
       noCriminalRecord: true, noChildRecord: true, hourlyWage: 100, address: 'some', zipCode: '2400', city: 'København NV'}
-    ], itemId: undefined, isAdmin: undefined};
+    ], itemId: undefined, isAdmin: undefined, isProcessing: false };
   }
 
   // public addSitter(sitter: Sitter): void {
@@ -45,6 +45,6 @@ export class InitialStateService {
         {_id: '5k', name: 'Brian', female: false, birthDate: new Date(2015, 5, 14)},
         {_id: '6k', name: 'Jens', female: false, birthDate: new Date(2016, 5, 14), specialNeeds: 'XL bleer'}
       ]}
-    ], itemId: undefined };
+    ], itemId: undefined}; //isProcessing: false 
   }
 }

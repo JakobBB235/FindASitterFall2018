@@ -41,6 +41,7 @@ import { RegisterparentComponent } from './home/register/registerparent/register
 import { CreateKidComponent } from './portal/findparent/parent-details/create-kid/create-kid.component'; //FIX
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatCardModule,
     NgReduxModule, NgReduxRouterModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

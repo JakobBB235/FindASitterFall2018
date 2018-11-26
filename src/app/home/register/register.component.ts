@@ -11,6 +11,8 @@ import { IAppState } from './../../store';
 export class RegisterComponent implements OnInit {
   isBaby: boolean; //Redux
 
+  isProcessing: boolean = false; //NEW
+
   constructor(private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
@@ -19,6 +21,8 @@ export class RegisterComponent implements OnInit {
     // Setting the isBaby variable to be the value of the isBaby var. in the state.
     this.ngRedux.select(state => state.sitters).subscribe((sitterState) => {
       this.isBaby = sitterState.isBaby;
+
+      this.isProcessing = sitterState.isProcessing; //NEW
     })
   }
 

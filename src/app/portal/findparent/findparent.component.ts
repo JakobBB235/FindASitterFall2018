@@ -42,4 +42,9 @@ export class FindparentComponent implements OnInit {
     this.parentsActions.saveId(id);
     this.router.navigate(['portal/findparent/parent-details']);
   }
+
+  onKidCreateClicked(id: string){
+    this.parentsActions.saveId(id);
+    this.router.navigate(['portal/findparent/parent-details/create-kid']);
+  }
 }

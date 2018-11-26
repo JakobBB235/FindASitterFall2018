@@ -1,15 +1,21 @@
-<p>
+<!-- <p>
   register works!
-</p>
+</p> -->
 
 <!-- Redux. View calls (action creator) method that dispatches an action.-->
-<button (click)="sittersActions.setType(false)">Register as sitter</button>
+<!-- <button (click)="sittersActions.setType(false)">Register as sitter</button>
 <button (click)="sittersActions.setType(true)">Register as baby</button>
 <div *ngIf="!isBaby && isBaby !== undefined"> you are registering as a sitter</div> 
-<div *ngIf="isBaby"> you are registering as a baby</div>
+<div *ngIf="isBaby"> you are registering as a baby</div> -->
 
-<button mat-stroked-button routerLink="registerbaby" color="primary">Register Baby</button>
+<!-- <button mat-stroked-button routerLink="registerbaby" color="primary">Register Baby</button> -->
 <button mat-stroked-button routerLink="registerparent" color="primary">Register Parent</button>
 <button mat-stroked-button routerLink="registersitter" id="registerSitterId" color="primary">Register Sitter</button>
 
 <router-outlet></router-outlet>
+
+
+<!-- NEW -->
+<div *ngIf="isProcessing">
+  <mat-spinner></mat-spinner>
+</div>
