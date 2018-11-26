@@ -16,15 +16,13 @@ export class ParentDetailsComponent implements OnInit {
   constructor(private parentsActions: ParentsActions,  private ngRedux: NgRedux<IAppState>) { } 
 
   ngOnInit() {
-    // this.parentsActions.getAllParents();
-
     this.ngRedux.select(x => x.parents).subscribe((data) => {
-      this.clickedParent = data.parents.filter(x => x._id === data.itemId)[0]
+      this.clickedParent = data.parents.filter(x => x._id === data.itemId)[0] //only one with matching id so always index 0
       this.kids = this.clickedParent.kids;
       //this.isAdmin = data.isAdmin;
       console.log(this.kids);
     });
 
-    this.kids = this.clickedParent.kids;
+    // this.kids = this.clickedParent.kids;
   }
 }

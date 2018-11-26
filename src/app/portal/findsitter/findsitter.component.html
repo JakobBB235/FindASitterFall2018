@@ -17,7 +17,6 @@
   </app-displaysitter>
 </mat-card> -->
 
-
 <mat-card *ngFor="let sitter of sitters; let i = index" class="example-card" id="testLoop">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -27,6 +26,9 @@
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <ul *ngIf="!adminUser" id="testLoop2"> 
+      <!-- To show male or female instead of true or false -->
+      <!-- <li *ngIf="sitter.female"><strong>Gender : </strong>Female</li>
+      <li *ngIf="!sitter.female"><strong>Gender : </strong>Male</li> -->
       <li><strong>Female :</strong> {{sitter.female}}</li>
       <li><strong>Birthdate :</strong> {{sitter.birthDate}}</li>
       <li><strong>No Criminal Record :</strong> {{sitter.noCriminalRecord}}</li>
@@ -58,3 +60,7 @@
     <!-- </div> -->
   </mat-card-actions>
 </mat-card>
+
+<div *ngIf="spinnerLoading">
+  <mat-spinner></mat-spinner>
+</div>

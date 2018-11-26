@@ -38,7 +38,9 @@ import { FindparentComponent } from './portal/findparent/findparent.component';
 import { ParentDetailsComponent } from './portal/findparent/parent-details/parent-details.component';
 import { EditKidComponent } from './portal/findparent/parent-details/edit-kid/edit-kid.component';
 import { RegisterparentComponent } from './home/register/registerparent/registerparent.component';
-import { CreateKidComponent } from './portal/findparent/parent-details/create-kid/create-kid.component' //FIX
+import { CreateKidComponent } from './portal/findparent/parent-details/create-kid/create-kid.component'; //FIX
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { CreateKidComponent } from './portal/findparent/parent-details/create-ki
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    NgReduxModule, NgReduxRouterModule.forRoot()
+    NgReduxModule, NgReduxRouterModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,9 @@
-<p>
-  parent-details works!
-</p>
+<h1>{{clickedParent.name}} Children:</h1>
 
 <mat-card *ngFor="let kid of kids" class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{Kid.name}}</mat-card-title>
+    <mat-card-title>{{kid.name}}</mat-card-title>
     <mat-card-subtitle>Kid</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
