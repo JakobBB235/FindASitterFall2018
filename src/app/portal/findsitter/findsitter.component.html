@@ -16,8 +16,14 @@
     (sitterEditClicked)="onSitterEditClicked($event, index)"> 
   </app-displaysitter>
 </mat-card> -->
+<div class="search">
+  <mat-form-field>
+    <!-- [(ngModel)] is two way data binding -->
+    <input matInput placeholder="Search sitters" [(ngModel)]="search">
+  </mat-form-field>
+</div>
 
-<mat-card *ngFor="let sitter of sitters; let i = index" class="example-card" id="testLoop">
+<mat-card *ngFor="let sitter of sitters | filterSitters: search" class="example-card" id="testLoop">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{sitter.name}}</mat-card-title>
@@ -29,11 +35,19 @@
       <!-- To show male or female instead of true or false -->
       <!-- <li *ngIf="sitter.female"><strong>Gender : </strong>Female</li>
       <li *ngIf="!sitter.female"><strong>Gender : </strong>Male</li> -->
-      <li><strong>Female :</strong> {{sitter.female}}</li>
-      <li><strong>Birthdate :</strong> {{sitter.birthDate}}</li>
-      <li><strong>No Criminal Record :</strong> {{sitter.noCriminalRecord}}</li>
-      <li><strong>No Child Record :</strong> {{sitter.noChildRecord}}</li>
-      <li><strong>Hourly Wage :</strong> {{sitter.hourlyWage}} </li>
+      <li><strong>Gender :</strong> {{sitter.female | genderFilter}}</li>
+      <!-- <li><strong>Birthdate :</strong> {{sitter.birthDate}}</li> -->
+      <!-- Popular date js libary: momentJs -->
+      <!-- FILTER: | date | lowercase -->
+      <li><strong>Birthdate :</strong> {{sitter.birthDate | date}}</li>
+      <!-- <li><strong>Birthdate :</strong> {{sitter.birthDate | date:'yyyy-MM-dd'}}</li> -->
+
+      <!-- <li><strong>No Criminal Record :</strong> {{sitter.noCriminalRecord}}</li>
+      <li><strong>No Child Record :</strong> {{sitter.noChildRecord}}</li> -->
+      <strong style="color:red">{{sitter.noCriminalRecord | criminalRecordFilter}}</strong>
+      <strong style="color:red">{{sitter.noChildRecord | childRecordFilter}}</strong>
+      <!-- FILTER: | currency-->
+      <li><strong>Hourly Wage :</strong> {{sitter.hourlyWage | currency:'DKK'}} </li>
       <li><strong>Address :</strong> {{sitter.address}}</li>
       <li><strong>Zip Code :</strong> {{sitter.zipCode}}</li>
       <li><strong>City :</strong> {{sitter.city}}</li>
@@ -61,6 +75,6 @@
   </mat-card-actions>
 </mat-card>
 
-<div *ngIf="spinnerLoading">
+<div *ngIf="isProcessing">
   <mat-spinner></mat-spinner>
 </div>

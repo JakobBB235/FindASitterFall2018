@@ -22,6 +22,9 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
   static GET_ALL_SITTERS: string = 'GET_ALL_SITTERS';
+  static GET_ALL_SITTERS_SUCCESS: string = 'GET_ALL_SITTERS_SUCCESS';
+  static GET_ALL_SITTERS_FAILURE: string = 'GET_ALL_SITTERS_FAILURE';
+  
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -148,15 +151,45 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     });
   }
 
+  // //Gets all sitters from API
+  // getAllSitters(): boolean { //: boolean or void
+  //   this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
+  //     const myData = responseFromApi.filter(x => x.customerId === 'jak123');
+  //     console.log(myData);
+  //     console.log("TEST1")
+  //     this.ngRedux.dispatch({
+  //       type: SittersActions.GET_ALL_SITTERS,
+  //       payload: myData 
+  //     });
+  //   });
+  //   return false;
+  // }
+
   //Gets all sitters from API
   getAllSitters(): boolean { //: boolean or void
+
+    this.ngRedux.dispatch({
+      type: SittersActions.GET_ALL_SITTERS,
+      // payload: myData 
+      //NO PAYLOAD
+    });
+
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
       const myData = responseFromApi.filter(x => x.customerId === 'jak123');
       console.log(myData);
       console.log("TEST1")
+
+      //If it was a success
       this.ngRedux.dispatch({
-        type: SittersActions.GET_ALL_SITTERS,
+        type: SittersActions.GET_ALL_SITTERS_SUCCESS,
         payload: myData 
+      });
+    }, error => {
+      console.log("Error! ", error);
+      //If websevice fails
+      this.ngRedux.dispatch({
+        type: SittersActions.GET_ALL_SITTERS_FAILURE,
+        payload: error 
       });
     });
     return false;

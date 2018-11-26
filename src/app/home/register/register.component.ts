@@ -23,7 +23,21 @@ export class RegisterComponent implements OnInit {
       this.isBaby = sitterState.isBaby;
 
       this.isProcessing = sitterState.isProcessing; //NEW
-    })
+
+      console.log(sitterState);
+    });
+
+
+    //USE ISBABY BOOLEAN TO CHANGE, WRITE LOGIC IN REGISTERPARENT & SITTER. SUBSCRIBE TO PARENT STATE???
+    // this.ngRedux.select(state => state.sitters).subscribe((sitterState) => {
+    //   this.isBaby = sitterState.isBaby;
+
+    //   this.isProcessing = sitterState.isProcessing; //NEW
+
+    //   console.log(sitterState);
+    // });
+
+
   }
 
 }

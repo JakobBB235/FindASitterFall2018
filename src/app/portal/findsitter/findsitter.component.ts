@@ -16,7 +16,7 @@ export class FindsitterComponent implements OnInit {
 
   sitters: Sitter[];
   isAdmin: boolean = false;
-  isProcessing: boolean = false;
+  isProcessing: boolean = false; //NEW
 
   constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions, private router: Router,
     private apiService: ApiService) { }
@@ -35,6 +35,8 @@ export class FindsitterComponent implements OnInit {
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.sitters = data.sitters;
       this.isAdmin = data.isAdmin;
+
+      this.isProcessing = data.isProcessing; //NEW
 
       // this.spinnerLoading = false;
       console.log(this.sitters);

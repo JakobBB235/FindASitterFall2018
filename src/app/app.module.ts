@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterbabyComponent } from './home/register/registerbaby/registerbaby.component';
 import { RegistersitterComponent } from './home/register/registersitter/registersitter.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -42,6 +42,7 @@ import { CreateKidComponent } from './portal/findparent/parent-details/create-ki
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FilterSitters, GenderFilter, ChildRecordFilter, CriminalRecordFilter } from './portal/findsitter/sitters.filter';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ParentDetailsComponent,
     EditKidComponent,
     RegisterparentComponent,
-    CreateKidComponent
+    CreateKidComponent,
+    FilterSitters,
+    GenderFilter,
+    CriminalRecordFilter,
+    ChildRecordFilter
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatCardModule,
     NgReduxModule, NgReduxRouterModule.forRoot(),
     MatProgressSpinnerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

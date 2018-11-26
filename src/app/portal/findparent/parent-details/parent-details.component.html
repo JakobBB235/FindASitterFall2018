@@ -10,7 +10,7 @@
   <mat-card-content>
     <ul *ngIf="!adminUser"> 
       <li><strong>Female :</strong> {{kid.female}}</li>
-      <li><strong>Birthdate :</strong> {{kid.birthDate}}</li>
+      <li><strong>Birthdate :</strong> {{kid.birthDate | date}}</li>
       <li><strong>Special Needs :</strong> {{kid.specialNeeds}}</li>
     </ul>
 

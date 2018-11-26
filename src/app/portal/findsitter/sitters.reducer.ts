@@ -67,10 +67,17 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
         case SittersActions.ENABLE_ADMIN_AUTHORITY: //action.payload = boolean
             return tassign(state, { isAdmin: action.payload })
 
+        // case SittersActions.GET_ALL_SITTERS: //action.payload = Sitter[] (all sitters from API)
+        //     // return tassign(state, { sitters: [...state.sitters, ...action.payload]});
+        //     //Filter ensures that multiple instances of the same sitter are not added to the state every time
+        //     return tassign(state, { sitters: [...state.sitters.filter(sitter => sitter.customerId !== 'jak123'), ...action.payload]})
+
         case SittersActions.GET_ALL_SITTERS: //action.payload = Sitter[] (all sitters from API)
-            // return tassign(state, { sitters: [...state.sitters, ...action.payload]});
-            //Filter ensures that multiple instances of the same sitter are not added to the state every time
-            return tassign(state, { sitters: [...state.sitters.filter(sitter => sitter.customerId !== 'jak123'), ...action.payload]})
+            return tassign(state, { isProcessing: true })
+        case SittersActions.GET_ALL_SITTERS_SUCCESS:
+            return tassign(state, { isProcessing: false, sitters: [...state.sitters.filter(sitter => sitter.customerId !== 'jak123'), ...action.payload]})
+        case SittersActions.GET_ALL_SITTERS_FAILURE:
+            return tassign(state, { isProcessing: false })
         default:
             return state;
     }
