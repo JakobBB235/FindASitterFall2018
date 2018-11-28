@@ -17,6 +17,7 @@ import { FindparentComponent } from './portal/findparent/findparent.component';
 import { ParentDetailsComponent } from './portal/findparent/parent-details/parent-details.component';
 import { EditKidComponent } from './portal/findparent/parent-details/edit-kid/edit-kid.component';
 import { RegisterparentComponent } from './home/register/registerparent/registerparent.component';
+import { CreateKidComponent } from './portal/findparent/create-kid/create-kid.component';
 
 // Insert routes here
 const routes: Routes = [
@@ -38,6 +39,20 @@ const routes: Routes = [
   },
 
   // Subrouting children. Has AuthGuard
+  // {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:
+  //   [
+  //     {path: 'findbaby', component: FindbabyComponent}, //Disable
+  //     {path: 'findsitter', component: FindsitterComponent},
+  //     {path: 'findparent', component: FindparentComponent, children: 
+  //     [
+  //       {path: 'parent-details', component: ParentDetailsComponent},
+  //       {path: 'edit-kid', component: EditKidComponent}
+  //     ]}
+  //     // {path: 'findsitter/:id', component: EditsitterComponent}
+  //   ]
+  // },
+
+  //NEW
   {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:
     [
       {path: 'findbaby', component: FindbabyComponent}, //Disable
@@ -45,11 +60,19 @@ const routes: Routes = [
       {path: 'findparent', component: FindparentComponent, children: 
       [
         {path: 'parent-details', component: ParentDetailsComponent},
-        {path: 'edit-kid', component: EditKidComponent}
+        {path: 'create-kid', component: CreateKidComponent}
+        // {path: 'edit-kid', component: EditKidComponent}
       ]}
       // {path: 'findsitter/:id', component: EditsitterComponent}
     ]
   },
+
+  // {path: 'parent-details', component: ParentDetailsComponent, children: 
+  //       [
+  //         {path: 'create-kid', component: CreateKidComponent},
+  //         {path: 'edit-kid', component: EditKidComponent}
+  //       ]
+  //     }
 
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children:
     [

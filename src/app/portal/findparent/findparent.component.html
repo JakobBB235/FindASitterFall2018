@@ -26,22 +26,22 @@
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <ul *ngIf="!adminUser"> 
-      <li><strong>Female :</strong> {{parent.female}}</li>
+    <ul> 
+      <li><strong>Gender :</strong> {{parent.female | genderFilter}}</li>
       <li><strong>Address :</strong> {{parent.address}}</li>
       <li><strong>Zip Code :</strong> {{parent.zipCode}}</li>
-      <!-- <li><strong>Number of Kids :</strong> {{parent.kids.length}}</li> -->
+      <li><strong>Number of Kids :</strong> {{parent.kids | childCountFilter}}</li>
       <li><strong>City :</strong> {{parent.city}}</li>
     </ul>
 
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="onParentDetailsClicked(parent._id)">DETAILS</button>
-    <!-- <div *ngIf="isAdmin"> -->
+    <div *ngIf="isAdmin">
         <button mat-button (click)="onParentEditClicked(parent._id)">EDIT</button>
         <button mat-button (click)="onParentDeleteClicked(parent._id)">DELETE</button>
         <button mat-button (click)="onKidCreateClicked(parent._id)">CREATE KID</button>
-    <!-- </div> -->
+    </div>
   </mat-card-actions>
 </mat-card>
 

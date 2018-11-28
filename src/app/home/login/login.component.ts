@@ -31,8 +31,11 @@ export class LoginComponent implements OnInit {
     //   this.authService.login().subscribe(result => {
     //   this.router.navigate(['/portal']);
     // }); //Subscribe!
-  
-    if(loginForm.username == "admin" && loginForm.password == "aD_min123"){ //Not working
+    const username: string = loginForm.value.username as string;
+    const password: string = loginForm.value.password as string;
+    console.log(username);
+    console.log(password);
+    if(username == "admin" && password == "aD_min123"){ //Not working
       console.log("Admin Authority");
       this.sittersActions.enableAdminAuthority();
       // this.router.navigate(['/admin']);

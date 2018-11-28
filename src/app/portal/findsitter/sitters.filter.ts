@@ -8,16 +8,19 @@ export class FilterSitters implements PipeTransform {
     transform(items: Sitter[], search: string): any{
         //custom code.
         //To give filter a parameter.   let baby of babies | filterBabies: search
-        //Remember to imprort in ngmodules
+        //Remember to import in ngmodules
 
         console.log(items);
         console.log(search);
         // return items; //Returns all items
-
-        //FIX
-        if(search !== undefined)
+        // const gender:boolean = 
+        // if(search == 'female')
+        //     gender = 
+        //FIX || x.female.toString().toLowerCase().includes(search.toLowerCase())  
+        if(search !== undefined) {
             return items.filter(x => x.name.toLowerCase().includes(search.toLowerCase()) || 
-            x.zipCode == search); //|| x.female.includes(search)  
+            x.zipCode == search); 
+        }
         else
             return items;
     }
@@ -38,7 +41,7 @@ export class GenderFilter implements PipeTransform {
 @Pipe({name: 'criminalRecordFilter'}) //This is what you use in html.
 @Injectable({providedIn: 'root'})
 export class CriminalRecordFilter implements PipeTransform {
-    transform(noCriminalRecord: boolean): any{
+    transform(noCriminalRecord: boolean): any{ // boolean/string
         let test = noCriminalRecord.toString();
         console.log('Filtertest', test);
         if(test === 'true'){
@@ -56,7 +59,7 @@ export class CriminalRecordFilter implements PipeTransform {
 @Injectable({providedIn: 'root'})
 export class ChildRecordFilter implements PipeTransform {
 
-    transform(noChildRecord: string): any{
+    transform(noChildRecord: boolean): any{ // boolean/string
         let test = noChildRecord.toString();
         console.log('Filtertest', test);
         if(test === 'true'){

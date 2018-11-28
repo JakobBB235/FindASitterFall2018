@@ -22,13 +22,8 @@ export class FindsitterComponent implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit() {
-    // this.spinnerLoading = true;
     console.log("TEST2");
     this.sittersActions.getAllSitters(); 
-    // this.sittersActions.getAllSitters().subscribe(() => this.spinnerLoading = false); //async
-    // this.spinnerLoading = this.sittersActions.getAllSitters(); //async
-    // let res: boolean = this.sittersActions.getAllSitters(); 
-    // this.spinnerLoading = res;
     // console.log(res);
     
     console.log("TEST3");
@@ -38,7 +33,6 @@ export class FindsitterComponent implements OnInit {
 
       this.isProcessing = data.isProcessing; //NEW
 
-      // this.spinnerLoading = false;
       console.log(this.sitters);
       console.log("TEST4");
     });

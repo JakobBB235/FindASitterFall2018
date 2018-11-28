@@ -31,7 +31,7 @@
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <ul *ngIf="!adminUser" id="testLoop2"> 
+    <ul id="testLoop2"> 
       <!-- To show male or female instead of true or false -->
       <!-- <li *ngIf="sitter.female"><strong>Gender : </strong>Female</li>
       <li *ngIf="!sitter.female"><strong>Gender : </strong>Male</li> -->
@@ -53,25 +53,13 @@
       <li><strong>City :</strong> {{sitter.city}}</li>
     </ul>
 
-    <!-- Write input fields? -->
-    <!-- <ul *ngIf="isAdmin" id="testLoop2"> 
-      <li>Female : {{sitter.female}}</li>
-      <li>Birthdate : {{sitter.birthDate}}</li>
-      <li>No Criminal Record : {{sitter.noCriminalRecord}}</li>
-      <li>No Child Record : {{sitter.noChildRecord}}</li>
-      <li>Hourly Wage : {{sitter.hourlyWage}} </li>
-      <li>Address : {{sitter.address}}</li>
-      <li>Zip Code : {{sitter.zipCode}}</li>
-      <li>City : {{sitter.city}}</li> -->
-      <!-- <app-edit-sitter></app-edit-sitter> -->
-    <!-- </ul> -->
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>RATE</button>
-    <!-- <div *ngIf="isAdmin"> -->
+    <div *ngIf="isAdmin">
         <button mat-button (click)="onSitterEditClicked(sitter._id)">EDIT</button>
         <button mat-button (click)="onSitterDeleteClicked(sitter._id)">DELETE</button>
-    <!-- </div> -->
+    </div>
   </mat-card-actions>
 </mat-card>
 

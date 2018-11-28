@@ -1,12 +1,12 @@
 <h2>
-  create-kid works!
+  Register {{clickedParent.name}} child
 </h2>
 
-<form novalidate [formGroup]="KidForm" (ngSubmit)="onSubmit(KidForm)">
+<form novalidate [formGroup]="createKidForm" (ngSubmit)="onSubmit(createKidForm)">
     <mat-form-field class="example-full-width">
-        <input matInput type="text" id="nameId" placeholder="Name of baby" formControlName="name">
+        <input matInput type="text" id="nameId" placeholder="Name of child" formControlName="name">
     </mat-form-field><br>
-    <div *ngIf='KidForm.controls.name.touched && KidForm.controls.name.errors?.required'> 
+    <div *ngIf='createKidForm.controls.name.touched && createKidForm.controls.name.errors?.required'> 
         Name must be filled out
     </div>
   
@@ -16,7 +16,7 @@
           <mat-option id="genderMaleId" value="false">Male</mat-option>
         </mat-select>
     </mat-form-field><br>
-    <div *ngIf='KidForm.controls.female.touched && KidForm.controls.name.errors?.required'> 
+    <div *ngIf='createKidForm.controls.female.touched && createKidForm.controls.name.errors?.required'> 
           Gender must be filled out
     </div>
   
@@ -25,14 +25,14 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
     </mat-form-field><br>
-    <div *ngIf='KidForm.controls.birthDate.touched && KidForm.controls.name.errors?.required'> 
+    <div *ngIf='createKidForm.controls.birthDate.touched && createKidForm.controls.name.errors?.required'> 
           Birthdate must be filled out
     </div>
     
     <mat-form-field class="example-full-width">
         <input matInput type="text" placeholder="Special Needs" formControlName="specialNeeds">
     </mat-form-field><br>
-    <div *ngIf='KidForm.controls.specialNeeds.touched && KidForm.controls.name.errors?.required'> 
+    <div *ngIf='createKidForm.controls.specialNeeds.touched && createKidForm.controls.name.errors?.required'> 
           Special needs must be filled out
     </div>
   

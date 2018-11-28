@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Kid, Parent } from 'src/app/entities/parent';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/store';
-import { ParentsActions } from '../parents.actions';
 
 @Component({
   selector: 'app-parent-details',
@@ -13,7 +12,7 @@ export class ParentDetailsComponent implements OnInit {
 
   kids: Kid[];
   clickedParent: Parent;
-  constructor(private parentsActions: ParentsActions,  private ngRedux: NgRedux<IAppState>) { } 
+  constructor(private ngRedux: NgRedux<IAppState>) { } 
 
   ngOnInit() {
     this.ngRedux.select(x => x.parents).subscribe((data) => {

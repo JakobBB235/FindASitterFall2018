@@ -38,11 +38,12 @@ import { FindparentComponent } from './portal/findparent/findparent.component';
 import { ParentDetailsComponent } from './portal/findparent/parent-details/parent-details.component';
 import { EditKidComponent } from './portal/findparent/parent-details/edit-kid/edit-kid.component';
 import { RegisterparentComponent } from './home/register/registerparent/registerparent.component';
-import { CreateKidComponent } from './portal/findparent/parent-details/create-kid/create-kid.component'; //FIX
+import { CreateKidComponent } from './portal/findparent/create-kid/create-kid.component'; //FIX
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FilterSitters, GenderFilter, ChildRecordFilter, CriminalRecordFilter } from './portal/findsitter/sitters.filter';
+import { ChildCountFilter } from './portal/findparent/parents.filter';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { FilterSitters, GenderFilter, ChildRecordFilter, CriminalRecordFilter } 
     FilterSitters,
     GenderFilter,
     CriminalRecordFilter,
-    ChildRecordFilter
+    ChildRecordFilter,
+    ChildCountFilter
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Parent } from 'src/app/entities/parent';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/store';
 import { Router } from '@angular/router';
+import { SittersActions } from '../findsitter/sitters.actions';
 
 @Component({
   selector: 'app-findparent',
@@ -14,16 +15,22 @@ export class FindparentComponent implements OnInit {
   parents: Parent[];
   isAdmin: boolean = false;
 
-  constructor(private parentsActions: ParentsActions, private ngRedux: NgRedux<IAppState>, private router: Router) { }
+  constructor(private parentsActions: ParentsActions, private ngRedux: NgRedux<IAppState>, private router: Router,
+    private sittersActions: SittersActions) { }
 
   ngOnInit() {
     this.parentsActions.getAllParents();
 
     this.ngRedux.select(x => x.parents).subscribe((data) => {
-      this.parents = data.parents;
+      this.parents = data.parents; //Perhaps filter parents with more than 0 kids. Exclude 0 kids?
       //this.isAdmin = data.isAdmin;
       console.log(this.parents);
       console.log(data.parents[0].kids.length);
+    });
+
+    //Set admin value
+    this.ngRedux.select(x => x.sitters).subscribe((data) => {
+      this.isAdmin = data.isAdmin; 
     });
   }
 
@@ -45,6 +52,6 @@ export class FindparentComponent implements OnInit {
 
   onKidCreateClicked(id: string){
     this.parentsActions.saveId(id);
-    this.router.navigate(['portal/findparent/parent-details/create-kid']);
+    this.router.navigate(['portal/findparent/create-kid']);
   }
 }
