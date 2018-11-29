@@ -45,6 +45,6 @@ export class InitialStateService {
         {_id: '5k', name: 'Brian', female: false, birthDate: new Date(2015, 5, 14)},
         {_id: '6k', name: 'Jens', female: false, birthDate: new Date(2016, 5, 14), specialNeeds: 'XL bleer'}
       ]}
-    ], itemId: undefined}; //isProcessing: false 
+    ], itemId: undefined, isProcessing: false};
   }
 }

@@ -43,7 +43,7 @@ import { CreateKidComponent } from './portal/findparent/create-kid/create-kid.co
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FilterSitters, GenderFilter, ChildRecordFilter, CriminalRecordFilter } from './portal/findsitter/sitters.filter';
-import { ChildCountFilter } from './portal/findparent/parents.filter';
+import { ChildCountFilter, FilterParents } from './portal/findparent/parents.filter';
 
 @NgModule({
   declarations: [
@@ -71,7 +71,8 @@ import { ChildCountFilter } from './portal/findparent/parents.filter';
     GenderFilter,
     CriminalRecordFilter,
     ChildRecordFilter,
-    ChildCountFilter
+    ChildCountFilter,
+    FilterParents
   ],
   imports: [
     BrowserModule,

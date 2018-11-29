@@ -17,8 +17,14 @@
   </app-displaysitter>
 </mat-card> -->
 
+<div class="search">
+  <mat-form-field>
+    <!-- [(ngModel)] is two way data binding -->
+    <input matInput placeholder="Search parents" [(ngModel)]="search">
+  </mat-form-field>
+</div>
 
-<mat-card *ngFor="let parent of parents; let i = index" class="example-card">
+<mat-card *ngFor="let parent of parents | filterParents: search" class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{parent.name}}</mat-card-title>
@@ -44,5 +50,9 @@
     </div>
   </mat-card-actions>
 </mat-card>
+
+<div *ngIf="isProcessing">
+  <mat-spinner></mat-spinner>
+</div>
 
 <router-outlet></router-outlet>

@@ -20,6 +20,7 @@ export class ParentsState {
     // isParent: boolean;
     parents: Parent[];
     itemId: string;
+    isProcessing: boolean; //Spinner
 }
 
 // My app's state is defined here. Every variable that my application needs,

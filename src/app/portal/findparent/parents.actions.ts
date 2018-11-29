@@ -20,6 +20,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   static DELETE_EXISTING_PARENT: string = 'DELETE_EXISTING_PARENT'; //Delete
 //   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
   static GET_ALL_PARENTS: string = 'GET_ALL_PARENTS';
+  static GET_ALL_PARENTS_SUCCESS: string = 'GET_ALL_PARENTS_SUCCESS';
+  static GET_ALL_PARENTS_FAILURE: string = 'GET_ALL_PARENTS_FAILURE';
 
   // This method can be called from a component, and will dispatch an action.
   // Parameter is what we want to pass from the component to the reducer.
@@ -90,15 +92,42 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 //     });
 //   }
 
-  //Gets all parents from API
-  getAllParents(): void {
+  // //Gets all parents from API
+  // getAllParents(): void {
+  //   this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
+  //     const myData = responseFromApi.filter(x => x.customerId === 'jakparent');
+  //     console.log(myData);
+
+  //     this.ngRedux.dispatch({
+  //       type: ParentsActions.GET_ALL_PARENTS,
+  //       payload: myData 
+  //     });
+  //   });
+  // }
+
+   //Gets all parents from API
+   getAllParents(): void {
+    //Sets isProcessing to true(spinner)
+    this.ngRedux.dispatch({
+      type: ParentsActions.GET_ALL_PARENTS,
+      //No payload
+    });
+
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
       const myData = responseFromApi.filter(x => x.customerId === 'jakparent');
       console.log(myData);
 
+      //If webservice succeeds
       this.ngRedux.dispatch({
-        type: ParentsActions.GET_ALL_PARENTS,
-        payload: myData 
+        type: ParentsActions.GET_ALL_PARENTS_SUCCESS,
+        payload: myData
+      });
+    },  error => {
+      console.log("Error! ", error);
+      //If websevice fails
+      this.ngRedux.dispatch({
+        type: ParentsActions.GET_ALL_PARENTS_FAILURE,
+        payload: error 
       });
     });
   }

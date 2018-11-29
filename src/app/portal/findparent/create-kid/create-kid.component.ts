@@ -17,7 +17,7 @@ export class CreateKidComponent implements OnInit {
   clickedParent: Parent;
 
   constructor(private fb: FormBuilder, private router: Router, private ngRedux: NgRedux<IAppState>, 
-    private parentsActions: ParentsActions) { }
+    private parentsActions: ParentsActions) { } 
 
   ngOnInit() {
     this.createKidForm = this.fb.group(
@@ -33,6 +33,8 @@ export class CreateKidComponent implements OnInit {
       this.clickedParent = data.parents.filter(x => x._id === data.itemId)[0] //only one with matching id so always index 0
 
     });
+
+    
   }
 
   onSubmit(createKidForm){

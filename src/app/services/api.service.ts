@@ -36,6 +36,7 @@ export class ApiService {
   // }
 
 
+  //Decide if its best to take any params & make multiple methods with same content to ensure correct param inputs.(Sitter/Parent) objects
   //REST API METHODS: //Change environment: http://angular2api2.azurewebsites.net/api/internships
   getAllSitters(){
     return this.http.get(environment.apiUrl);

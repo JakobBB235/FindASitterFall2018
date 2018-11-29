@@ -14,6 +14,7 @@ import { SittersActions } from '../findsitter/sitters.actions';
 export class FindparentComponent implements OnInit {
   parents: Parent[];
   isAdmin: boolean = false;
+  isProcessing: boolean = false;
 
   constructor(private parentsActions: ParentsActions, private ngRedux: NgRedux<IAppState>, private router: Router,
     private sittersActions: SittersActions) { }
@@ -26,6 +27,9 @@ export class FindparentComponent implements OnInit {
       //this.isAdmin = data.isAdmin;
       console.log(this.parents);
       console.log(data.parents[0].kids.length);
+
+      //NEW
+      this.isProcessing = data.isProcessing;
     });
 
     //Set admin value

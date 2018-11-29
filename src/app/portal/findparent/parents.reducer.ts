@@ -42,9 +42,17 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
         // case ParentsActions.ENABLE_ADMIN_AUTHORITY: //action.payload = boolean
         //     return tassign(state, { isAdmin: action.payload })
 
+        // case ParentsActions.GET_ALL_PARENTS: //action.payload = Parent[] (all parents from API)
+        //     //Filter ensures that multiple instances of the same parent are not added to the state every time
+        //     return tassign(state, { parents: [...state.parents.filter(parent => parent.customerId !== 'jakparent'), ...action.payload]})
+
         case ParentsActions.GET_ALL_PARENTS: //action.payload = Parent[] (all parents from API)
+            return tassign(state, { isProcessing: true } )
+        case ParentsActions.GET_ALL_PARENTS_FAILURE:
+            return tassign(state, { isProcessing: false })
+        case ParentsActions.GET_ALL_PARENTS_SUCCESS:
             //Filter ensures that multiple instances of the same parent are not added to the state every time
-            return tassign(state, { parents: [...state.parents.filter(parent => parent.customerId !== 'jakparent'), ...action.payload]})
+            return tassign(state, { isProcessing: false , parents: [...state.parents.filter(parent => parent.customerId !== 'jakparent'), ...action.payload]})
         default:
             return state;
     }

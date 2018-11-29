@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Kid, Parent } from 'src/app/entities/parent';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'src/app/store';
+import { SittersActions } from '../../findsitter/sitters.actions';
 
 @Component({
   selector: 'app-parent-details',
@@ -12,7 +13,9 @@ export class ParentDetailsComponent implements OnInit {
 
   kids: Kid[];
   clickedParent: Parent;
-  constructor(private ngRedux: NgRedux<IAppState>) { } 
+  isAdmin: boolean;
+  
+  constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions) { }  //SittersActions added
 
   ngOnInit() {
     this.ngRedux.select(x => x.parents).subscribe((data) => {
@@ -23,5 +26,10 @@ export class ParentDetailsComponent implements OnInit {
     });
 
     // this.kids = this.clickedParent.kids;
+
+    //NEW
+    this.ngRedux.select(x => x.sitters).subscribe((data) => {
+      this.isAdmin = data.isAdmin;
+    });
   }
 }
