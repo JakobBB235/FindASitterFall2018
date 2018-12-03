@@ -25,6 +25,7 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
         case ParentsActions.SAVE_ID: //action.payload = string (id of item)
             return tassign(state, { itemId: action.payload })
 
+        //Find better way to update state. state is actually not updated
         case ParentsActions.UPDATE_EXISTING_PARENT: //Not working. //action.payload = Parent (updated parent)
             //NEW
             let parentList = state.parents.filter(parent => parent._id !== action.payload._id);

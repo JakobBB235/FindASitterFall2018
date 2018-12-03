@@ -54,6 +54,6 @@ export class ApiService {
   }
 
   updateSitter(sitter: any){ //sitter has the id. //Sitter / any
-    return this.http.put(environment.apiUrl + "/" + sitter._id, sitter);
+    return this.http.put(environment.apiUrl + "/" + sitter._id, sitter); 
   }
 }

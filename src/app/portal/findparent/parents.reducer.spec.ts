@@ -4,7 +4,7 @@ import * as types from './parents.actions';
 import { InitialStateService } from 'src/app/services/initial-state.service';
 import { Parent } from 'src/app/entities/parent';
 
-describe('sitters reducer', () => {
+describe('parents reducer', () => {
   //Return initial state TEST
   it('should return the initial state', () => {
     expect(parentsReducer(undefined, {})).toEqual(InitialStateService.getInitialParentTestState()); //hvis der ikke sendes noget ind, får jeg så noget tilbage?
@@ -54,7 +54,7 @@ describe('sitters reducer', () => {
         address: 'some', zipCode: '2600', city: 'Glostrup', kids: [ 
           {_id: '7k', name: 'Marie', female: true, birthDate: new Date(2011, 5, 14)}
         ]}
-      ], itemId: undefined };
+      ], itemId: undefined, isProcessing: false };
 
     //Alternative endState
     // let endState = InitialStateService.getInitialSitterTestState();

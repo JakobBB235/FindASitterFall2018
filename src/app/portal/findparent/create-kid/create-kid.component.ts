@@ -48,7 +48,18 @@ export class CreateKidComponent implements OnInit {
 
   createNewKid(createKidForm){
     let kid = createKidForm.value as Kid;
-    this.clickedParent.kids.push(kid);
+    console.log(this.clickedParent);
+    console.log(kid);
+    
+    let kids: Kid[] = [kid];
+    if(this.clickedParent.kids != undefined){
+      kids = this.clickedParent.kids;
+      kids.push(kid);
+    } 
+    else {
+      this.clickedParent.kids = kids;
+    }
+    console.log(kid);
     this.parentsActions.updateParent(this.clickedParent); 
     // this.router.navigate(['/home/login']); 
   }

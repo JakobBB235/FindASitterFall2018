@@ -17,16 +17,16 @@ describe('findsitter', () => {
     it('1.0: Create a new sitter, after there should be one more', () => {
         browser.get('/portal/findsitter'); //1 redirects to login. because of auth
         
-        browser.sleep(1000);
+        // browser.sleep(1000);
         //2
         element(by.id('username')).sendKeys('myusername');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('password')).sendKeys('mypassword');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('loginbutton')).click();
         // let page = new AppPage; //init app.po.ts to use methods
         // page.login
-        browser.sleep(1000);
+        // browser.sleep(1000);
 
         element(by.id('findsitterId')).click();
         //3 Count 1st time
@@ -36,56 +36,61 @@ describe('findsitter', () => {
             sitterCountBefore = elemsAfter.length
         });
 
-        browser.sleep(1000);
+        // browser.sleep(1000);
 
         // element(by.id('registerSitterTestId')).click(); //4 ENABLE
         element(by.id('homeId')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('registerId')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('registerSitterId')).click();
         // $$('#findsitterId').click(); Alternative
 
-        browser.sleep(1000);
-        //5 missing username and password?
+        // browser.sleep(1000);
+        //5
+        element(by.id('usernameId')).sendKeys('username');
+        // browser.sleep(500);
+        element(by.id('passwordId')).sendKeys('password');
+        // browser.sleep(500);
         element(by.id('nameId')).sendKeys('Jakob');
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('genderId')).click();
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('genderMaleId')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
         // element.all(by.css('[ng-click="select(dt.date)"] > span')).first().click();
         element.all(by.id('birthdateId')).sendKeys('2/19/1994');
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('criminalRecordId')).click();
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('noCriminalRecordOptionId')).click();
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('childRecordId')).click();
-        browser.sleep(500);
+        // browser.sleep(500);
         element(by.id('noChildRecordOptionId')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('hourlywageId')).sendKeys('100');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('addressId')).sendKeys('some');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('zipcodeId')).sendKeys('3400');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('cityId')).sendKeys('Hillerød');
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('registerbutton')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
 
         // element(by.id('testbutton')).click(); //6 ENABLE
         element(by.id('portalId')).click();
-        browser.sleep(1000);
+        // browser.sleep(1000);
         element(by.id('findsitterId')).click();
 
-        browser.sleep(2000);
+        // browser.sleep(2000);
         //7 Count 2nd time
         element.all(by.id('testLoop2')).then(function(elemsAfter){
             console.log(elemsAfter.length);
             var sittersCountAfter = elemsAfter.length;
+            //Remove created sitter from DB?
             expect(sittersCountAfter-sitterCountBefore).toEqual(1); //8
             
             // good practice to make test fail until expects are written

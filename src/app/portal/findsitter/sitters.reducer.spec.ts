@@ -43,7 +43,7 @@ describe('sitters reducer', () => {
 
       {customerId: 'jak1234', _id: '4',username: 'jakob', password: 'bokaj', name: 'Jakob', female: false, birthDate: new Date(1995, 1, 1),
       noCriminalRecord: true, noChildRecord: true, hourlyWage: 200, address: 'some', zipCode: '3400', city: 'Hillerød'}
-    ], itemId: undefined, isAdmin: undefined};
+    ], itemId: undefined, isAdmin: undefined, isProcessing: false}; 
 
     //Alternative endState
     // let endState = InitialStateService.getInitialSitterTestState();
@@ -56,7 +56,7 @@ describe('sitters reducer', () => {
 
     //Expect, after calling reducer with state and action => new state is returned without mutations
     expect( sittersReducer(startState, { 
-      type: types.SittersActions.REGISTER_NEW_SITTER, 
+      type: types.SittersActions.REGISTER_NEW_SITTER_SUCCESS, 
       payload: sitterToBeCreated
     })).toEqual(endState);
   });
@@ -100,7 +100,8 @@ describe('sitters reducer', () => {
     // let indexOfSitterToBeUpdated: number = endState.sitters.findIndex(x => x._id === '2');
     // endState.sitters[indexOfSitterToBeUpdated] = updatedSitter;
 
-    let indexOfSitterToBeUpdated: number = endState.sitters.findIndex(x => x._id === '2');
+    //The sitter is pushed on the list, so it ends up being the last element. this does not work.
+    let indexOfSitterToBeUpdated: number = endState.sitters.findIndex(x => x._id === '2'); 
     endState.sitters[indexOfSitterToBeUpdated].hourlyWage = 215; //Hourly wage changed to 215
 
     //Checks for state mutations.

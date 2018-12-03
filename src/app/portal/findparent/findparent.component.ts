@@ -45,9 +45,9 @@ export class FindparentComponent implements OnInit {
   //     this.router.navigate(['/admin/edit-sitter']);
   // }
 
-//   onSitterDeleteClicked(id: string) { 
-//     this.sittersActions.deleteSitter(id);
-//   }
+  onSitterDeleteClicked(id: string) { 
+    this.parentsActions.deleteParent(id);
+  }
 
   onParentDetailsClicked(id: string){
     this.parentsActions.saveId(id);
