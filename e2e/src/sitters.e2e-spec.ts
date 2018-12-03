@@ -97,4 +97,37 @@ describe('findsitter', () => {
             // expect(true).toBeFalsy();
         });  
     });
+
+    it('1.0: Delete a sitter, after there should be one less', () => {
+        browser.get('/portal/findsitter'); //1 redirects to login. because of auth
+        
+        // browser.sleep(1000);
+        //2
+        element(by.id('username')).sendKeys('admin');
+        // browser.sleep(1000);
+        element(by.id('password')).sendKeys('aD_min123');
+        // browser.sleep(1000);
+        element(by.id('loginbutton')).click();
+
+        element(by.id('findsitterId')).click();
+        //3 Count 1st time
+        var sitterCountBefore;
+        element.all(by.id('testLoop2')).then(function(elemsAfter){ //css .example-card
+            console.log(elemsAfter.length);
+            sitterCountBefore = elemsAfter.length
+        });
+
+        element(by.id('deleteId')).click();
+
+        //Error in API so to update the state go to findsitter again
+        element(by.id('portalId')).click();
+        element(by.id('findsitterId')).click();
+
+        element.all(by.id('testLoop2')).then(function(elemsAfter){
+            console.log(elemsAfter.length);
+            var sittersCountAfter = elemsAfter.length;
+            //Remove created sitter from DB?
+            expect(sitterCountBefore-sittersCountAfter).toEqual(1); 
+        });  
+    });
 });

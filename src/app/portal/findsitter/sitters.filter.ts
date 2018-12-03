@@ -31,10 +31,16 @@ export class FilterSitters implements PipeTransform {
 export class GenderFilter implements PipeTransform {
 
     transform(female: boolean): any{
-        if(female)
-            return "Female";   
-        else
+        console.log(female);
+        let femalestr = female.toString();
+        if(femalestr === 'true') {
+            console.log('if', female);
+            return "Female"; 
+        }  
+        else {
+            console.log('else', female);
             return "Male";
+        }
     }
 }
 
@@ -43,13 +49,13 @@ export class GenderFilter implements PipeTransform {
 export class CriminalRecordFilter implements PipeTransform {
     transform(noCriminalRecord: boolean): any{ // boolean/string
         let test = noCriminalRecord.toString();
-        console.log('Filtertest', test);
+        // console.log('Filtertest', test);
         if(test === 'true'){
-            console.log("IF", test);
+            // console.log("IF", test);
             return "";   
         }
         else if (test === 'false'){
-            console.log("ELSE", test);
+            // console.log("ELSE", test);
             return "Criminal Record";
         }
     }
@@ -61,13 +67,13 @@ export class ChildRecordFilter implements PipeTransform {
 
     transform(noChildRecord: boolean): any{ // boolean/string
         let test = noChildRecord.toString();
-        console.log('Filtertest', test);
+        // console.log('Filtertest', test);
         if(test === 'true'){
-            console.log("IF", test);
+            // console.log("IF", test);
             return "";   
         }
         else if (test === 'false'){
-            console.log("ELSE", test);
+            // console.log("ELSE", test);
             return "Child Record";
         }
     }

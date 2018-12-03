@@ -27,16 +27,20 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
 
         //Find better way to update state. state is actually not updated
         case ParentsActions.UPDATE_EXISTING_PARENT: //Not working. //action.payload = Parent (updated parent)
-            //NEW
-            let parentList = state.parents.filter(parent => parent._id !== action.payload._id);
-            parentList.push(action.payload);
-            return tassign(state, { parents: parentList})
+            // let parentList = state.parents.filter(parent => parent._id !== action.payload._id);
+            // parentList.push(action.payload);
+            // return tassign(state, { parents: parentList})
 
-            //NEW2
-            // let sitterList = state.sitters;
-            // let indexOfItemToBeUpdated: number = sitterList.findIndex(x => x._id === action.payload._id)
-            // sitterList[indexOfItemToBeUpdated] = action.payload;
-            // return tassign(state, { sitters: sitterList })
+            //NEW
+            // get index of the parent
+            let index = state.parents.findIndex(parent => parent._id == action.payload._id)
+
+            return tassign(state, {parents: [
+              ...state.parents.slice(0, index),
+              action.payload,
+              ...state.parents.slice(index + 1)
+            ]});
+
         case ParentsActions.DELETE_EXISTING_PARENT: //action.payload = string (id of parent)
             return tassign(state, { parents: state.parents.filter(parent => parent._id !== action.payload) });
 

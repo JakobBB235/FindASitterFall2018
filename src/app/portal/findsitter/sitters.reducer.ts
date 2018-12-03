@@ -52,15 +52,20 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             // }
 
             //NEW
-            let sitterList = state.sitters.filter(sitter => sitter._id !== action.payload._id);
-            sitterList.push(action.payload);
-            return tassign(state, { sitters: sitterList})
+            // let sitterList = state.sitters.filter(sitter => sitter._id !== action.payload._id);
+            // sitterList.push(action.payload);
+            // return tassign(state, { sitters: sitterList})
 
             //NEW2
-            // let sitterList = state.sitters;
-            // let indexOfItemToBeUpdated: number = sitterList.findIndex(x => x._id === action.payload._id)
-            // sitterList[indexOfItemToBeUpdated] = action.payload;
-            // return tassign(state, { sitters: sitterList })
+            // get index of the sitter
+            let index = state.sitters.findIndex(sitter => sitter._id == action.payload._id)
+
+            return tassign(state, {sitters: [
+              ...state.sitters.slice(0, index),
+              action.payload,
+              ...state.sitters.slice(index + 1)
+            ]});
+            
         case SittersActions.DELETE_EXISTING_SITTER: //action.payload = string (id of sitter)
             return tassign(state, { sitters: state.sitters.filter(sitter => sitter._id !== action.payload) });
 

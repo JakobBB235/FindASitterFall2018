@@ -58,7 +58,7 @@
     <button mat-button>RATE</button>
     <div *ngIf="isAdmin">
         <button mat-button (click)="onSitterEditClicked(sitter._id)">EDIT</button>
-        <button mat-button (click)="onSitterDeleteClicked(sitter._id)">DELETE</button>
+        <button id="deleteId" mat-button (click)="onSitterDeleteClicked(sitter._id)">DELETE</button>
     </div>
   </mat-card-actions>
 </mat-card>
