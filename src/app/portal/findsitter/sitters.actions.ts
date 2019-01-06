@@ -60,13 +60,15 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   //   //   payload: sitter
   //   // });
   // }
+
+  //Method was modified to make processing spinner work
   createSitter(sitter: Sitter): void {
     sitter.customerId = "jak123"; 
 
     //This action is called to set a spinner, showing system is working.
     this.ngRedux.dispatch({
       type: SittersActions.REGISTER_NEW_SITTER,
-      // payload: sitter //response. NO PAYLOAD
+      // NO PAYLOAD
     });
 
     console.log("1");
@@ -93,11 +95,6 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     }); 
     console.log("2");
     //1 -> 2 -> 3 Async
-
-    // this.ngRedux.dispatch({
-    //   type: SittersActions.REGISTER_NEW_SITTER,
-    //   payload: sitter
-    // });
   }
 
   //Pathvariable is the best solution?
@@ -110,7 +107,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   }
 
   //Reuse createSitter?
-  updateSitter(sitter: Sitter): void { //index: number
+  updateSitter(sitter: Sitter): void { 
+    //Without API
     // this.ngRedux.dispatch({
     //   type: SittersActions.UPDATE_EXISTING_SITTER,
     //   payload: sitter
@@ -128,6 +126,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   }
 
   deleteSitter(id: string): void { //satisfy API. (index: number)
+    //Without API
     // this.ngRedux.dispatch({
     //   type: SittersActions.DELETE_EXISTING_SITTER,
     //   payload: id
@@ -165,12 +164,11 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   //   return false;
   // }
 
-  //Gets all sitters from API
+  //Gets all sitters from API. Method was modified to make process spinner work
   getAllSitters(): boolean { //: boolean or void
 
     this.ngRedux.dispatch({
       type: SittersActions.GET_ALL_SITTERS,
-      // payload: myData 
       //NO PAYLOAD
     });
 

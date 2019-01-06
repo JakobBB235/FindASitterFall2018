@@ -31,7 +31,6 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
             // parentList.push(action.payload);
             // return tassign(state, { parents: parentList})
 
-            //NEW
             // get index of the parent
             let index = state.parents.findIndex(parent => parent._id == action.payload._id)
 
@@ -47,6 +46,7 @@ export function parentsReducer(state: ParentsState = INITIAL_STATE, action:any) 
         // case ParentsActions.ENABLE_ADMIN_AUTHORITY: //action.payload = boolean
         //     return tassign(state, { isAdmin: action.payload })
 
+        //Was made into 3 cases to make process spinner work
         // case ParentsActions.GET_ALL_PARENTS: //action.payload = Parent[] (all parents from API)
         //     //Filter ensures that multiple instances of the same parent are not added to the state every time
         //     return tassign(state, { parents: [...state.parents.filter(parent => parent.customerId !== 'jakparent'), ...action.payload]})

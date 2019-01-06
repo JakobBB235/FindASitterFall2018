@@ -32,18 +32,9 @@
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <ul id="testLoop2"> 
-      <!-- To show male or female instead of true or false -->
-      <!-- <li *ngIf="sitter.female"><strong>Gender : </strong>Female</li>
-      <li *ngIf="!sitter.female"><strong>Gender : </strong>Male</li> -->
       <li><strong>Gender :</strong> {{sitter.female | genderFilter}}</li>
-      <!-- <li><strong>Birthdate :</strong> {{sitter.birthDate}}</li> -->
-      <!-- Popular date js libary: momentJs -->
       <!-- FILTER: | date | lowercase -->
       <li><strong>Birthdate :</strong> {{sitter.birthDate | date}}</li>
-      <!-- <li><strong>Birthdate :</strong> {{sitter.birthDate | date:'yyyy-MM-dd'}}</li> -->
-
-      <!-- <li><strong>No Criminal Record :</strong> {{sitter.noCriminalRecord}}</li>
-      <li><strong>No Child Record :</strong> {{sitter.noChildRecord}}</li> -->
       <strong style="color:red">{{sitter.noCriminalRecord | criminalRecordFilter}}</strong>
       <strong style="color:red">{{sitter.noChildRecord | childRecordFilter}}</strong>
       <!-- FILTER: | currency-->

@@ -9,9 +9,9 @@ import { IAppState } from './../../store';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  isBaby: boolean; //Redux
+  isBaby: boolean; //Not used?
 
-  isProcessing: boolean = false; //NEW
+  isProcessing: boolean = false; // Processing spinner showing up when a sitter is being created
 
   constructor(private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
 
@@ -22,22 +22,10 @@ export class RegisterComponent implements OnInit {
     this.ngRedux.select(state => state.sitters).subscribe((sitterState) => {
       this.isBaby = sitterState.isBaby;
 
-      this.isProcessing = sitterState.isProcessing; //NEW
+      this.isProcessing = sitterState.isProcessing; 
 
       console.log(sitterState);
     });
-
-
-    //USE ISBABY BOOLEAN TO CHANGE, WRITE LOGIC IN REGISTERPARENT & SITTER. SUBSCRIBE TO PARENT STATE???
-    // this.ngRedux.select(state => state.sitters).subscribe((sitterState) => {
-    //   this.isBaby = sitterState.isBaby;
-
-    //   this.isProcessing = sitterState.isProcessing; //NEW
-
-    //   console.log(sitterState);
-    // });
-
-
   }
 
 }

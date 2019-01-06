@@ -1,6 +1,6 @@
 export class Parent{
     customerId?: string;
-    _id?: string; //string remove ?
+    _id?: string; //remove ?
     username: string;
     password: string;
     name: string;
@@ -9,7 +9,7 @@ export class Parent{
     address: string;
     zipCode: string;
     city: string;
-    kids: Kid[];
+    kids: Kid[]; 
     // ratings: Rating[];
 }
 

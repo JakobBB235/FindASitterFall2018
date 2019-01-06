@@ -22,7 +22,6 @@ import {
 }                           from '@angular/router';
 import { AuthService }      from './auth.service';
 
-// @Injectable()
 @Injectable({
   providedIn: 'root'
 })
@@ -42,8 +41,8 @@ export class AuthGuard implements CanActivate {
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
-    // Navigate to the login page with extras
-    this.router.navigate(['/home/login']); // /login
+    // Navigate to the login page
+    this.router.navigate(['/home/login']);
     return false;
   }
 }

@@ -15,7 +15,7 @@ export class ParentDetailsComponent implements OnInit {
   clickedParent: Parent;
   isAdmin: boolean;
   
-  constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions) { }  //SittersActions added
+  constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions) { } 
 
   ngOnInit() {
     this.ngRedux.select(x => x.parents).subscribe((data) => {
@@ -25,9 +25,6 @@ export class ParentDetailsComponent implements OnInit {
       console.log(this.kids);
     });
 
-    // this.kids = this.clickedParent.kids;
-
-    //NEW
     this.ngRedux.select(x => x.sitters).subscribe((data) => {
       this.isAdmin = data.isAdmin;
     });

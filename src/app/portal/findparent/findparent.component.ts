@@ -28,7 +28,6 @@ export class FindparentComponent implements OnInit {
       console.log(this.parents);
       console.log(data.parents[0].kids.length);
 
-      //NEW
       this.isProcessing = data.isProcessing;
     });
 

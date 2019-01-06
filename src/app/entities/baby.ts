@@ -1,3 +1,4 @@
+//Baby entity is not used anymore and can be deleted along with all related components
 export class Baby {
     customerId?: string;
     _id?: string; //string remove ?

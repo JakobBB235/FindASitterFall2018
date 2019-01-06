@@ -16,7 +16,7 @@ export class FindsitterComponent implements OnInit {
 
   sitters: Sitter[];
   isAdmin: boolean = false;
-  isProcessing: boolean = false; //NEW
+  isProcessing: boolean = false; 
 
   constructor(private ngRedux: NgRedux<IAppState>, private sittersActions: SittersActions, private router: Router,
     private apiService: ApiService) { }
@@ -31,7 +31,7 @@ export class FindsitterComponent implements OnInit {
       this.sitters = data.sitters;
       this.isAdmin = data.isAdmin;
 
-      this.isProcessing = data.isProcessing; //NEW
+      this.isProcessing = data.isProcessing; 
 
       console.log(this.sitters);
       console.log("TEST4");

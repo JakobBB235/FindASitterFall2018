@@ -45,4 +45,23 @@ describe('Sitter search filter', () => {
         expect(result.length).toBe(1);
         expect(result[0].name).toBe('Azat Baran');
     });
+
+    it('2.0 invalid data:  Search "Azat" with undefined array', () => {
+         //Arrange
+         const sitters: Sitter[] = undefined;
+         const filter: FilterSitters = new FilterSitters();
+ 
+         var result = undefined;
+         //Act
+         try {
+            result = filter.transform(sitters, 'Azat')
+         } catch (TypeError) {
+            
+         }
+        
+ 
+         //Assert(expect)
+        //  expect(result.length).toBe(0);
+         expect(result).toBe(undefined);
+    });
 });

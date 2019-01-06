@@ -85,13 +85,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     }); 
   }
 
-//   enableAdminAuthority(): void {
-//     this.ngRedux.dispatch({
-//       type: ParentsActions.ENABLE_ADMIN_AUTHORITY,
-//       payload: true
-//     });
-//   }
-
+  //Old method
   // //Gets all parents from API
   // getAllParents(): void {
   //   this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
@@ -106,7 +100,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   // }
 
    //Gets all parents from API
-   getAllParents(): void {
+   getAllParents(): void { //Method was modified to make progress spinner work. Old version above
     //Sets isProcessing to true(spinner)
     this.ngRedux.dispatch({
       type: ParentsActions.GET_ALL_PARENTS,

@@ -6,17 +6,10 @@ import { Sitter } from "src/app/entities/sitter";
 export class FilterSitters implements PipeTransform {
 
     transform(items: Sitter[], search: string): any{
-        //custom code.
-        //To give filter a parameter.   let baby of babies | filterBabies: search
         //Remember to import in ngmodules
 
         console.log(items);
-        console.log(search);
-        // return items; //Returns all items
-        // const gender:boolean = 
-        // if(search == 'female')
-        //     gender = 
-        //FIX || x.female.toString().toLowerCase().includes(search.toLowerCase())  
+        console.log(search);  
         if(search !== undefined) {
             return items.filter(x => x.name.toLowerCase().includes(search.toLowerCase()) || 
             x.zipCode == search); 

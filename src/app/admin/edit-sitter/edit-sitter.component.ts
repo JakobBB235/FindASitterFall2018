@@ -57,8 +57,7 @@ export class EditSitterComponent implements OnInit {
   }
   
   updateSitter(editSitterForm){
-    //Easy way, cast to sitter:
-    let sitter = editSitterForm.value as Sitter;
+    let sitter = editSitterForm.value as Sitter; //Easy way, cast to sitter
     this.sittersActions.updateSitter(sitter);
     this.router.navigate(['/portal/findsitter']);
   }

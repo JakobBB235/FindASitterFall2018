@@ -8,10 +8,10 @@ import { SittersActions } from './findsitter/sitters.actions';
 })
 export class PortalComponent implements OnInit {
 
-  constructor(private sittersActions: SittersActions) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.sittersActions.getAllSitters();
+    
   }
 
 }

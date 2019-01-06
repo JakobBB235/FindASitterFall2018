@@ -10,6 +10,7 @@ describe('parents reducer', () => {
     expect(parentsReducer(undefined, {})).toEqual(InitialStateService.getInitialParentTestState()); //hvis der ikke sendes noget ind, får jeg så noget tilbage?
   });
 
+  // Toggle isbaby is not used anymore
 //   //Toggle isBaby TEST
 //   it('Toggle isBaby or sitter', () => {
 //     //Initial state. Makes sense to create a method initializing this to avoid changing all places if more than one test.

@@ -20,6 +20,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             return tassign(state, { isBaby: action.payload })//libary tassign. Shows errors and shorter syntax
             // state.isBaby = action.payload; // state mutations : NO NO!!!
 
+        //Was made into 3 cases to make process spinner work
         // case SittersActions.REGISTER_NEW_SITTER: //action.payload = Sitter
         //     // Copies sitters array and adds the new sitter object to the copy
         //     return tassign(state, { sitters: [...state.sitters, action.payload]})
@@ -39,18 +40,6 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
             return tassign(state, { itemId: action.payload })
 
         case SittersActions.UPDATE_EXISTING_SITTER: //Not working. //action.payload = Sitter (updated sitter)
-            //OLD
-            // let sitter = state.sitters[action.payload.index]
-            // let updatedSitter = {
-            //     ...sitter,                
-            //     ...action.payload.sitter
-            // };
-            // let sitters = [...state.sitters];
-            // sitters[action.payload.index] = updatedSitter;
-            // return {
-            //     ...state, sitters: sitters
-            // }
-
             //NEW
             // let sitterList = state.sitters.filter(sitter => sitter._id !== action.payload._id);
             // sitterList.push(action.payload);
@@ -72,6 +61,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
         case SittersActions.ENABLE_ADMIN_AUTHORITY: //action.payload = boolean
             return tassign(state, { isAdmin: action.payload })
 
+        //Was made into 3 cases to make process spinner work
         // case SittersActions.GET_ALL_SITTERS: //action.payload = Sitter[] (all sitters from API)
         //     // return tassign(state, { sitters: [...state.sitters, ...action.payload]});
         //     //Filter ensures that multiple instances of the same sitter are not added to the state every time

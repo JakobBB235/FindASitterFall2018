@@ -1,27 +1,7 @@
-<p>
-  edit-sitter works!
-</p>
 <!-- FIELDS MUST BE PRE-POPPULATED WITH DATA -->
 <h1>Edit Baby Sitter</h1>
 
 <form novalidate [formGroup]="editSitterForm" (ngSubmit)="onSubmit(editSitterForm)">
-
-    <!-- DELETE -->
-        <!-- <mat-form-field class="example-full-width">
-                <input matInput type="text" id="usernameId" placeholder="Username" formControlName="username">
-            </mat-form-field><br>
-            <div *ngIf='editSitterForm.controls.username.touched && editSitterForm.controls.username.errors?.required'> 
-                Username must be filled out
-            </div>
-          
-            <mat-form-field class="example-full-width">
-                <input matInput type="password" id="passwordId" placeholder="Password" formControlName="password">
-            </mat-form-field><br>
-            <div *ngIf='editSitterForm.controls.password.touched && editSitterForm.controls.password.errors?.required'> 
-                Password must be filled out
-            </div> -->
-            
-            
 
   <mat-form-field class="example-full-width">
       <input matInput type="text" id="nameId" placeholder="Name" formControlName="name"> <!--value="{{sitterToBeEdited.name}}" -->

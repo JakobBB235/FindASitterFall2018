@@ -37,14 +37,14 @@ export class RegistersitterComponent implements OnInit {
   onSubmit(registerSitterForm){
     if (registerSitterForm.valid){
       // alert("valid"); 
-      this.createNewUser(registerSitterForm); //Used in test
+      this.createNewUser(registerSitterForm);
     } else
       alert("invalid");
     console.log(registerSitterForm)
   }
   
-  //Used in test
   createNewUser(registerSitterForm){
+    //Bad way to create sitter object:
     // const theSitter = new Sitter();
     // theSitter.name = registerSitterForm.name;
     // theSitter.female = registerSitterForm.female;
