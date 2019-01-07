@@ -27,12 +27,10 @@ export class ParentsState {
 // should be here.
 export class IAppState {
     sitters?: SittersState;
-    // babies?: BabiesState;
     parents?: ParentsState;
 }
 export const rootReducer = combineReducers<IAppState>({
     sitters: sittersReducer,
-    // babies: babiesReducer
     parents: parentsReducer
     // router: routerReducer
 });

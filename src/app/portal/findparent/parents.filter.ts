@@ -8,7 +8,7 @@ export class ChildCountFilter implements PipeTransform {
     transform(items: Kid[]): any{
         //Remember to import in ngmodules
 
-        console.log(items);
+        // console.log(items);
         if(items != null || items != undefined)
             return items.length; //might fail if no kids
         else
@@ -23,8 +23,8 @@ export class FilterParents implements PipeTransform {
     transform(items: Parent[], search: string): any{
         //Remember to import in ngmodules
 
-        console.log(items);
-        console.log(search);
+        // console.log(items);
+        // console.log(search);
 
         if(search !== undefined) {
             return items.filter(x => x.name.toLowerCase().includes(search.toLowerCase()) || 

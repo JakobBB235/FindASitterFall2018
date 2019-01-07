@@ -35,37 +35,11 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     })
   }
 
-  // createSitter(sitter: Sitter): void {
-  //   sitter.customerId = "jak123"; 
-
-  //   console.log("1");
-  //   //Action creater calls web service, and dispatches new redux action.
-  //   this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
-  //     console.log("3");
-  //     console.log("CustomerID is: ", sitter.customerId); //
-  //     console.log("Response", response) //response is actually a sitter object. pass on to reducer method as payload?
-
-  //     this.ngRedux.dispatch({
-  //       type: SittersActions.REGISTER_NEW_SITTER,
-  //       payload: sitter //response
-  //     });
-  //   }, error => {
-  //     console.log("Error! Sitter was not created", error);
-  //   }); 
-  //   console.log("2");
-  //   //1 -> 2 -> 3 Async
-
-  //   // this.ngRedux.dispatch({
-  //   //   type: SittersActions.REGISTER_NEW_SITTER,
-  //   //   payload: sitter
-  //   // });
-  // }
-
   //Method was modified to make processing spinner work
   createSitter(sitter: Sitter): void {
-    sitter.customerId = "jak123"; 
+    sitter.customerId = "jak123"; //This is used to find the correct data in the database
 
-    //This action is called to set a spinner, showing system is working.
+    //Sets isProcessing to true(spinner)
     this.ngRedux.dispatch({
       type: SittersActions.REGISTER_NEW_SITTER,
       // NO PAYLOAD
@@ -75,8 +49,6 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     //Action creater calls web service, and dispatches new redux action.
     this.apiService.createSitter(sitter).subscribe(response => { //Subscribing is needed to make it work. //save in DB
       console.log("3");
-      console.log("CustomerID is: ", sitter.customerId); //
-      console.log("Response", response) //response is actually a sitter object. pass on to reducer method as payload?
 
       //If all goes well.
       this.ngRedux.dispatch({
@@ -108,14 +80,9 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
 
   //Reuse createSitter?
   updateSitter(sitter: Sitter): void { 
-    //Without API
-    // this.ngRedux.dispatch({
-    //   type: SittersActions.UPDATE_EXISTING_SITTER,
-    //   payload: sitter
-    // });
-
     this.apiService.updateSitter(sitter).subscribe(response => {
       console.log("Response", response);
+
       this.ngRedux.dispatch({
         type: SittersActions.UPDATE_EXISTING_SITTER,
         payload: sitter //response
@@ -125,15 +92,10 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     });
   }
 
-  deleteSitter(id: string): void { //satisfy API. (index: number)
-    //Without API
-    // this.ngRedux.dispatch({
-    //   type: SittersActions.DELETE_EXISTING_SITTER,
-    //   payload: id
-    // });
-
+  deleteSitter(id: string): void { //satisfy API
     this.apiService.deleteSitter(id).subscribe(response => { //Subscribing is needed to make it work. //delete from DB
       console.log("Response", response)
+
       this.ngRedux.dispatch({
         type: SittersActions.DELETE_EXISTING_SITTER,
         payload: id
@@ -150,23 +112,10 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     });
   }
 
-  // //Gets all sitters from API
-  // getAllSitters(): boolean { //: boolean or void
-  //   this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
-  //     const myData = responseFromApi.filter(x => x.customerId === 'jak123');
-  //     console.log(myData);
-  //     console.log("TEST1")
-  //     this.ngRedux.dispatch({
-  //       type: SittersActions.GET_ALL_SITTERS,
-  //       payload: myData 
-  //     });
-  //   });
-  //   return false;
-  // }
-
   //Gets all sitters from API. Method was modified to make process spinner work
   getAllSitters(): boolean { //: boolean or void
 
+    //Sets isProcessing to true(spinner)
     this.ngRedux.dispatch({
       type: SittersActions.GET_ALL_SITTERS,
       //NO PAYLOAD

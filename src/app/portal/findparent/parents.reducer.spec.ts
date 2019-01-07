@@ -10,24 +10,6 @@ describe('parents reducer', () => {
     expect(parentsReducer(undefined, {})).toEqual(InitialStateService.getInitialParentTestState()); //hvis der ikke sendes noget ind, får jeg så noget tilbage?
   });
 
-  // Toggle isbaby is not used anymore
-//   //Toggle isBaby TEST
-//   it('Toggle isBaby or sitter', () => {
-//     //Initial state. Makes sense to create a method initializing this to avoid changing all places if more than one test.
-//     let startState = InitialStateService.getInitialSitterTestState();
-//     let endState = InitialStateService.getInitialSitterTestState();
-//     endState.isBaby = true; //REMOVE?
-
-//     //Checks for state mutations.
-//     deepFreeze(startState);
-
-//     //Expect, after calling reducer with state and action => new state is returned without mutations
-//     expect( sittersReducer(startState, { 
-//       type: types.SittersActions.SET_REGISTER_BABYTYPE, 
-//       payload: true 
-//     })).toEqual(endState);
-//   });
-
   //CREATE TEST
   it('Create parent', () => {
     //Initial state. Makes sense to create a method initializing this to avoid changing all places if more than one test.

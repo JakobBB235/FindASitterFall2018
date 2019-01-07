@@ -38,7 +38,6 @@ describe('findsitter', () => {
 
         // browser.sleep(1000);
 
-        // element(by.id('registerSitterTestId')).click(); //4 ENABLE
         element(by.id('homeId')).click();
         // browser.sleep(1000);
         element(by.id('registerId')).click();

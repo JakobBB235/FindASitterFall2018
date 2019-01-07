@@ -24,7 +24,6 @@ export class FindsitterComponent implements OnInit {
   ngOnInit() {
     console.log("TEST2");
     this.sittersActions.getAllSitters(); 
-    // console.log(res);
     
     console.log("TEST3");
     this.ngRedux.select(x => x.sitters).subscribe((data) => {

@@ -13,24 +13,13 @@ export class ParentsActions {
 constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService) {} 
 
   // This gives a strongly typed way to call an action.
-//   static SET_REGISTER_BABYTYPE: string = 'SET_REGISTER_BABYTYPE'; 
   static REGISTER_NEW_PARENT: string = 'REGISTER_NEW_PARENT'; //Create
   static SAVE_ID: string = 'SAVE_ID'; //Save ID of item about to be updated/deleted
   static UPDATE_EXISTING_PARENT: string = 'UPDATE_EXISTING_PARENT'; //Update
   static DELETE_EXISTING_PARENT: string = 'DELETE_EXISTING_PARENT'; //Delete
-//   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
   static GET_ALL_PARENTS: string = 'GET_ALL_PARENTS';
   static GET_ALL_PARENTS_SUCCESS: string = 'GET_ALL_PARENTS_SUCCESS';
   static GET_ALL_PARENTS_FAILURE: string = 'GET_ALL_PARENTS_FAILURE';
-
-  // This method can be called from a component, and will dispatch an action.
-  // Parameter is what we want to pass from the component to the reducer.
-//   setType(isBaby: boolean): void {
-//     this.ngRedux.dispatch({
-//       type: ParentsActions.SET_REGISTER_BABYTYPE,
-//       payload: isBaby
-//     })
-//   }
 
   createParent(parent: Parent): void {
     parent.customerId = "jakparent"; 
@@ -85,22 +74,8 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     }); 
   }
 
-  //Old method
-  // //Gets all parents from API
-  // getAllParents(): void {
-  //   this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
-  //     const myData = responseFromApi.filter(x => x.customerId === 'jakparent');
-  //     console.log(myData);
-
-  //     this.ngRedux.dispatch({
-  //       type: ParentsActions.GET_ALL_PARENTS,
-  //       payload: myData 
-  //     });
-  //   });
-  // }
-
    //Gets all parents from API
-   getAllParents(): void { //Method was modified to make progress spinner work. Old version above
+   getAllParents(): void { //Method was modified to make progress spinner work.
     //Sets isProcessing to true(spinner)
     this.ngRedux.dispatch({
       type: ParentsActions.GET_ALL_PARENTS,

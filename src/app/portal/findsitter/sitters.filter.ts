@@ -8,8 +8,8 @@ export class FilterSitters implements PipeTransform {
     transform(items: Sitter[], search: string): any{
         //Remember to import in ngmodules
 
-        console.log(items);
-        console.log(search);  
+        // console.log(items);
+        // console.log(search);  
         if(search !== undefined) {
             return items.filter(x => x.name.toLowerCase().includes(search.toLowerCase()) || 
             x.zipCode == search); 
@@ -24,14 +24,14 @@ export class FilterSitters implements PipeTransform {
 export class GenderFilter implements PipeTransform {
 
     transform(female: boolean): any{
-        console.log(female);
+        // console.log(female);
         let femalestr = female.toString();
         if(femalestr === 'true') {
-            console.log('if', female);
+            // console.log('if', female);
             return "Female"; 
         }  
         else {
-            console.log('else', female);
+            // console.log('else', female);
             return "Male";
         }
     }

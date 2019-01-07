@@ -1,19 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-// import { Observable } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthGuard implements CanActivate {
-//   canActivate(
-//     next: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-//     // Will always allow access because return true
-//     return true;
-//   }
-// }
 import { Injectable }       from '@angular/core';
 import {
   CanActivate, Router,
@@ -37,7 +21,7 @@ export class AuthGuard implements CanActivate {
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
     
-    console.log("Authguard siger at isLoggedIn er: " + this.authService.isLoggedIn)
+    console.log("Authguard says that isLoggedIn is: " + this.authService.isLoggedIn);
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
