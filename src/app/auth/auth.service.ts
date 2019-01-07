@@ -1,18 +1,7 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthService {
-
-//   constructor() { }
-// }
 import { Injectable } from '@angular/core';
-
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 
-// @Injectable()
 @Injectable({
   providedIn: 'root'
 })

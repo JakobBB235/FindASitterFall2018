@@ -62,7 +62,7 @@ describe('parents reducer', () => {
     //Initial state. Makes sense to create a method initializing this to avoid changing all places if more than one test.
     let startState = InitialStateService.getInitialParentTestState();
     let endState = InitialStateService.getInitialParentTestState();
-    endState.parents = endState.parents.filter(x => x._id !== '2');
+    endState.parents = endState.parents.filter(x => x._id !== '2p');
 
     //Checks for state mutations.
     deepFreeze(startState);
@@ -70,7 +70,7 @@ describe('parents reducer', () => {
     //Expect, after calling reducer with state and action => new state is returned without mutations
     expect( parentsReducer(startState, { 
       type: types.ParentsActions.DELETE_EXISTING_PARENT, 
-      payload: '2'
+      payload: '2p' //Trying to delete parent with id = 2p
     })).toEqual(endState);
   });
 
@@ -83,13 +83,13 @@ describe('parents reducer', () => {
     //Another kid added: Christian
     let updatedParent: Parent = {customerId: 'jak1234', _id: '2p', username: 'frank', password: 'secret', name: 'Frank', female: false,
     address: 'some', zipCode: '2600', city: 'Glostrup', kids: [ 
-      {_id: '1k', name: 'Sarah', female: true, birthDate: new Date(2015, 5, 14)},
-      {_id: '2k', name: 'Sofie', female: true, birthDate: new Date(2016, 5, 14)},
-      {_id: '7k', name: 'Christian', female: true, birthDate: new Date(2017, 5, 14)}
+      {_id: '2k', name: 'Sarah', female: true, birthDate: new Date(2015, 5, 14)},
+      {_id: '3k', name: 'Sofie', female: true, birthDate: new Date(2016, 5, 14)},
+      {_id: '7k', name: 'Christian', female: false, birthDate: new Date(2017, 5, 14)}
     ]};
 
-    let indexOfParentToBeUpdated: number = endState.parents.findIndex(x => x._id === '2');
-    endState.parents[indexOfParentToBeUpdated].kids.push({_id: '7k', name: 'Christian', female: true, birthDate: new Date(2017, 5, 14)});
+    let indexOfParentToBeUpdated: number = endState.parents.findIndex(x => x._id === '2p');
+    endState.parents[indexOfParentToBeUpdated].kids.push({_id: '7k', name: 'Christian', female: false, birthDate: new Date(2017, 5, 14)});
     // endState.parents[indexOfParentToBeUpdated] = updatedParent;
 
     //Checks for state mutations.
