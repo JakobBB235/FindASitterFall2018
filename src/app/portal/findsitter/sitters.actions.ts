@@ -17,7 +17,7 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
   static REGISTER_NEW_SITTER: string = 'REGISTER_NEW_SITTER'; //Create
   static REGISTER_NEW_SITTER_SUCCESS: string = 'REGISTER_NEW_SITTER_SUCCESS'; //Create
   static REGISTER_NEW_SITTER_FAILURE: string = 'REGISTER_NEW_SITTER_FAILURE'; //Create
-  static SAVE_ID: string = 'SAVE_ID'; //Save ID of item about to be updated/deleted
+  static SAVE_ID: string = 'SAVE_ID'; //Save ID of item about to be updated
   static UPDATE_EXISTING_SITTER: string = 'UPDATE_EXISTING_SITTER'; //Update
   static DELETE_EXISTING_SITTER: string = 'DELETE_EXISTING_SITTER'; //Delete
   static ENABLE_ADMIN_AUTHORITY: string = 'ENABLE_ADMIN_AUTHORITY';
@@ -124,7 +124,6 @@ constructor (private ngRedux: NgRedux<IAppState>, private apiService: ApiService
     this.apiService.getAllSitters().subscribe((responseFromApi: any[]) => { 
       const myData = responseFromApi.filter(x => x.customerId === 'jak123');
       console.log(myData);
-      console.log("TEST1")
 
       //If it was a success
       this.ngRedux.dispatch({

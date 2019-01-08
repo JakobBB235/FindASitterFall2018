@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './home/login/login.component';
-import { RegisterbabyComponent } from './home/register/registerbaby/registerbaby.component';
 import { RegistersitterComponent } from './home/register/registersitter/registersitter.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +16,6 @@ import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { FindsitterComponent } from './portal/findsitter/findsitter.component';
-import { FindbabyComponent } from './portal/findbaby/findbaby.component';
 import { RegisterComponent } from './home/register/register.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
@@ -49,12 +47,10 @@ import { ChildCountFilter, FilterParents } from './portal/findparent/parents.fil
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterbabyComponent,
     RegistersitterComponent,
     HomeComponent,
     PortalComponent,
     FindsitterComponent,
-    FindbabyComponent,
     RegisterComponent,
     ContactComponent,
     PagenotfoundComponent,

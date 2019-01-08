@@ -15,8 +15,10 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
 
         // When writing the CRUD cases, look into javascript spread operator.
         case SittersActions.SET_REGISTER_BABYTYPE: //action.payload = boolean
+
             // Copies state, and inserts new isBaby value in new state, thereby "changing" the state
             // return Object.assign({}, state, {isBaby: action.payload}) //Without tassign libary
+            
             return tassign(state, { isBaby: action.payload })//libary tassign. Shows errors and shorter syntax
             // state.isBaby = action.payload; // state mutations : NO NO!!!
 

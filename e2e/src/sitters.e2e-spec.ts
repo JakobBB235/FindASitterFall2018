@@ -1,6 +1,7 @@
 import { browser, element, by } from "protractor";
 import { LoginComponent } from "src/app/home/login/login.component";
 import { AppPage } from "./app.po";
+import { Sitter } from "src/app/entities/sitter";
 
 //sitters-list
 describe('findsitter', () => {
@@ -100,15 +101,17 @@ describe('findsitter', () => {
     it('1.0: Delete a sitter, after there should be one less', () => {
         browser.get('/portal/findsitter'); //1 redirects to login. because of auth
         
-        // browser.sleep(1000);
+        browser.sleep(1000);
         //2
         element(by.id('username')).sendKeys('admin');
-        // browser.sleep(1000);
+        browser.sleep(1000);
         element(by.id('password')).sendKeys('aD_min123');
-        // browser.sleep(1000);
+        browser.sleep(1000);
         element(by.id('loginbutton')).click();
 
+        browser.sleep(1000);
         element(by.id('findsitterId')).click();
+        
         //3 Count 1st time
         var sitterCountBefore;
         element.all(by.id('testLoop2')).then(function(elemsAfter){ //css .example-card
@@ -116,12 +119,16 @@ describe('findsitter', () => {
             sitterCountBefore = elemsAfter.length
         });
 
+        browser.sleep(1000);
         element(by.id('deleteId')).click();
 
+        browser.sleep(1000);
         //Error in API so to update the state go to findsitter again
         element(by.id('portalId')).click();
+        browser.sleep(1000);
         element(by.id('findsitterId')).click();
 
+        browser.sleep(2000);
         element.all(by.id('testLoop2')).then(function(elemsAfter){
             console.log(elemsAfter.length);
             var sittersCountAfter = elemsAfter.length;

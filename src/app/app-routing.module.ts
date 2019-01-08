@@ -4,10 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { RegisterComponent } from './home/register/register.component';
-import { RegisterbabyComponent } from './home/register/registerbaby/registerbaby.component';
 import { RegistersitterComponent } from './home/register/registersitter/registersitter.component';
 import { PortalComponent } from './portal/portal.component';
-import { FindbabyComponent } from './portal/findbaby/findbaby.component';
 import { FindsitterComponent } from './portal/findsitter/findsitter.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './auth/auth.guard';
@@ -30,7 +28,6 @@ const routes: Routes = [
       {path: 'contact', component: ContactComponent},
       {path: 'register', component: RegisterComponent, children:
         [
-          {path: 'registerbaby', component: RegisterbabyComponent},
           {path: 'registersitter', component: RegistersitterComponent},
           {path: 'registerparent', component: RegisterparentComponent}
         ]
@@ -55,7 +52,6 @@ const routes: Routes = [
   //NEW
   {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:
     [
-      {path: 'findbaby', component: FindbabyComponent}, //Disable
       {path: 'findsitter', component: FindsitterComponent},
       {path: 'findparent', component: FindparentComponent, children: 
       [
