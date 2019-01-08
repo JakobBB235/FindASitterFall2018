@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SittersActions } from './findsitter/sitters.actions';
 
 @Component({
   selector: 'app-portal',
